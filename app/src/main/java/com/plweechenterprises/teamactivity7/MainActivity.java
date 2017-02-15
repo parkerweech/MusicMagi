@@ -14,5 +14,8 @@ public class MainActivity extends AppCompatActivity {
     String happyMessage = "HELLO WORLD!!!!!!!";
     // Nice message! :)
     // Testing Push and Pull
-    // Testing merge conflicts
+    // My line's gonna win!!
+    // I hope mine wins!!!!!!!!!!!!
+    // I love merge conflicts.
+    //Yo
 }
