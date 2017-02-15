@@ -12,4 +12,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     String happyMessage = "HELLO WORLD!!!!!!!";
+    // Nice message! :)
 }
