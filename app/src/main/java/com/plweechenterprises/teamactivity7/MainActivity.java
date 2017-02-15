@@ -16,4 +16,5 @@ public class MainActivity extends AppCompatActivity {
     // Testing Push and Pull
     // My line's gonna win!!
     // I hope mine wins!!!!!!!!!!!!
+    // I love merge conflicts.
 }
