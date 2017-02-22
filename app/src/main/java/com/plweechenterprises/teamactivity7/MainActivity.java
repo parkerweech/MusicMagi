@@ -10,12 +10,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    String happyMessage = "HELLO WORLD!!!!!!!";
-    // Nice message! :)
-    // Testing Push and Pull
-    // My line's gonna win!!
-    // I hope mine wins!!!!!!!!!!!!
-    // I love merge conflicts.
-    //Yo
+    
 }
