@@ -8,9 +8,9 @@ import static org.junit.Assert.*;
  * Created by Amber on 2/22/2017.
  */
 
-public class SaveFileTest {
+/*public class SaveFileTest {
     @Test
     public void fileSavesCorrectly() throws Exception {
         assertTrue(Save.saveFile());
     }
-}
+}*/
