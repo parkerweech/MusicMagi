@@ -16,6 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".FullScreenActivity"></activity>
+        <activity android:name=".Editor"></activity>
+        <activity android:name=".SaveFile" />
+        <activity android:name=".LoadFile" ></activity>
     </application>
 
 </manifest>
