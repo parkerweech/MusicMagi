@@ -3,9 +3,11 @@ package com.plweechenterprises.teamactivity7;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.List;
+
 public class Editor extends AppCompatActivity {
 
-    List<Note> noteList = new List<Note>;
+    List<Note> noteList;
     Note note;
 
     @Override
