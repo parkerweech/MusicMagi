@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TeamActivity7</string>
+    <string name="title_activity_full_screen">FullScreenActivity</string>
 </resources>
