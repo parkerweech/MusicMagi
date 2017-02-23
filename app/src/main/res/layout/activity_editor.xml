@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/save_button"
         android:layout_alignParentEnd="true"
-        android:id="@+id/fullScreen_button" />
+        android:id="@+id/fullScreen_button"
+        android:onClick="fullScreen"/>
 
     <Button
         android:text="Play"
@@ -25,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/fullScreen_button"
         android:layout_centerHorizontal="true"
-        android:id="@+id/play_button" />
+        android:id="@+id/play_button"
+        android:onClick="play"/>
 
     <Button
         android:text="Save"
