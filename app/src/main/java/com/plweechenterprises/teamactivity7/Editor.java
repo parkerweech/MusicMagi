@@ -1,7 +1,9 @@
 package com.plweechenterprises.teamactivity7;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.List;
 
@@ -32,10 +34,6 @@ public class Editor extends AppCompatActivity {
         //update display with x number of notes
     }
 
-    public void fullScreen() {
-        //change view to FullScreen activity
-    }
-
     public void delete() {
         //delete the last note on noteList
     }
@@ -44,7 +42,15 @@ public class Editor extends AppCompatActivity {
         //change view to Save activity
     }
 
-    public void play() {
+    public void play(View view) {
         //change view to FullScreen activity and play the music
+        Intent intent = new Intent(this, FullScreenActivity.class);
+        startActivity(intent);
+    }
+
+    public void fullScreen(View view) {
+        //change view to FullScreen activity
+        Intent intent = new Intent(this, FullScreenActivity.class);
+        startActivity(intent);
     }
 }
