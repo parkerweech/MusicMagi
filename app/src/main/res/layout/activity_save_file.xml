@@ -11,14 +11,15 @@
     tools:context="com.plweechenterprises.teamactivity7.SaveFile">
 
     <TextView
-        android:text="Please enter file "
+        android:text="Please enter project name:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editFileName"
-        android:layout_marginTop="82dp" />
+        android:textSize="18sp"
+        android:layout_marginBottom="58dp"
+        android:layout_above="@+id/editFileName"
+        android:layout_alignStart="@+id/editFileName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +29,17 @@
         android:ems="10"
         android:id="@+id/editFileName"
         android:textAlignment="center"
-        android:layout_below="@+id/textView2"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Save Project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:id="@+id/button"
+        android:layout_below="@+id/editFileName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" />
+        android:onClick=""/>
 </RelativeLayout>

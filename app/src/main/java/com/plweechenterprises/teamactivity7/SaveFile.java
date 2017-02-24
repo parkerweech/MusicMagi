@@ -1,7 +1,9 @@
 package com.plweechenterprises.teamactivity7;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class SaveFile extends AppCompatActivity {
 
@@ -19,6 +21,11 @@ public class SaveFile extends AppCompatActivity {
 
     void SaveFile() {
 
+    }
+
+    public void Save(View view) {
+        Intent intent = new Intent(this, Editor.class);
+        startActivity(intent);
     }
 
 }

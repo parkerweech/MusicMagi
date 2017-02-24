@@ -1,7 +1,9 @@
 package com.plweechenterprises.teamactivity7;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class LoadFile extends AppCompatActivity {
 
@@ -20,6 +22,11 @@ public class LoadFile extends AppCompatActivity {
 
     void OpenFile() {
 
+    }
+
+    public void Load(View view) {
+        Intent intent = new Intent(this,Editor.class);
+        startActivity(intent);
     }
 
 }
