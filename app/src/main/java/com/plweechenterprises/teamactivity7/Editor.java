@@ -41,6 +41,7 @@ public class Editor extends AppCompatActivity {
 
     public void addNote() {
         //adds note to noteList
+        noteList.add(note);
     }
 
     public void display() {
@@ -53,6 +54,8 @@ public class Editor extends AppCompatActivity {
 
     public void save() {
         //change view to Save activity
+        Intent intent = new Intent(this, SaveFile.class);
+        startActivity(intent);
     }
 
     public void playMini(View view) {
