@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/save_button"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="save"/>
 
     <Button
         android:text="Add Note"
@@ -43,7 +44,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/addNote"
         android:layout_above="@+id/deleteNote"
-        android:layout_alignStart="@+id/play_button" />
+        android:layout_alignStart="@+id/play_button"
+        android:onClick="addNote"/>
 
     <Spinner
         android:layout_width="match_parent"
