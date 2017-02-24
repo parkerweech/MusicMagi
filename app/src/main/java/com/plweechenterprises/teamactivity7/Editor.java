@@ -9,14 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Editor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    List<Note> noteList;
-    Note note;
-    String[] noteValues = {"A1", "B1", "C1", "D1", "E1", "F1", "G1", "A2", "B2", "C2", "D2", "E2", "F2", "G2", "A3"};
-    String[] noteLengths = {"Eighth Note", "Dotted Eighth", "Quarter Note", "Dotted Quarter", "Half Note", "Dotted Half", "Whole Note"};
+    private List<Note> noteList = new ArrayList<>();
+    private Note note = new Note();
+    private String[] noteValues = {"A1", "B1", "C1", "D1", "E1", "F1", "G1", "A2", "B2", "C2", "D2", "E2", "F2", "G2", "A3"};
+    private String[] noteLengths = {"Eighth Note", "Dotted Eighth", "Quarter Note", "Dotted Quarter", "Half Note", "Dotted Half", "Whole Note"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,12 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
         String tempValue = parent.getItemAtPosition(pos).toString();
 
         if (tempValue.length() < 3) {
-            selectNote(pos);
-            Toast.makeText(this,"Value: " + tempValue,Toast.LENGTH_SHORT).show();
+            selectNote(pos, tempValue);
+            //Toast.makeText(this,"Value: " + tempValue,Toast.LENGTH_SHORT).show();
         }
         else {
             selectLength(pos);
-            Toast.makeText(this, "Length: " + tempValue, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Length: " + tempValue, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -54,30 +55,53 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
         // Another interface callback
     }
 
-    public void selectNote(int value) {
+    public void selectNote(int value, String name) {
         //dropdown list with notes and rests
-        //note.setNoteValue(value);
+        note.setNoteValue(value);
+        note.setNoteName(name);
     }
 
     public void selectLength(int length) {
         //dropdown list with length of note
-        //note.setNoteLength(length);
+        note.setNoteLength(length);
     }
 
-    public void addNote() {
+    public void addNote(View view) {
         //adds note to noteList
         noteList.add(note);
+        Toast.makeText(this,"Note added",Toast.LENGTH_SHORT).show();
+        //display();
     }
 
     public void display() {
         //update display with x number of notes
+        int num;
+        String someNotes = null;
+
+        if(noteList.size() > 8)
+            num = noteList.size() - 8;
+        else
+            num = 0;
+
+        for(;num != 8; num++)
+        {
+            someNotes += noteList.get(num).getNoteName();
+            someNotes += " ";
+        }
+
+        Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();
     }
 
-    public void delete() {
+    public void delete(View view) {
         //delete the last note on noteList
+        if(noteList.size() != 0) {
+            noteList.remove(noteList.size() - 1);
+            Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
+        }
+        //display();
     }
 
-    public void save() {
+    public void save(View view) {
         //change view to Save activity
         Intent intent = new Intent(this, SaveFile.class);
         startActivity(intent);
