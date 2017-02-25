@@ -69,8 +69,8 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
     public void addNote(View view) {
         //adds note to noteList
         noteList.add(note);
-        Toast.makeText(this,"Note added",Toast.LENGTH_SHORT).show();
-        //display();
+        Toast.makeText(this,"Note added " + note.getNoteName(),Toast.LENGTH_SHORT).show();
+        display();
     }
 
     public void display() {
@@ -78,14 +78,14 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
         int num;
         String someNotes = null;
 
-        if(noteList.size() > 8)
+       if(noteList.size() > 8)
             num = noteList.size() - 8;
         else
             num = 0;
 
-        for(;num != 8; num++)
+        while(num < noteList.size())
         {
-            someNotes += noteList.get(num).getNoteName();
+            someNotes += noteList.get(num++).getNoteName();
             someNotes += " ";
         }
 
@@ -98,7 +98,7 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
             noteList.remove(noteList.size() - 1);
             Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
         }
-        //display();
+        display();
     }
 
     public void save(View view) {
