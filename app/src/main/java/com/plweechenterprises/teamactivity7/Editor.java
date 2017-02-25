@@ -108,7 +108,7 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
     }
 
     public void playMini(View view) {
-        //change view to FullScreen activity and play the music
+        //play the music that is currently being edited
         Intent intent = new Intent(this, FullScreenActivity.class);
         startActivity(intent);
     }

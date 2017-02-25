@@ -19,11 +19,11 @@ public class SaveFile extends AppCompatActivity {
 
     }
 
-    void SaveFile() {
+    void saveFile() {
 
     }
 
-    public void Save(View view) {
+    public void save(View view) {
         Intent intent = new Intent(this, Editor.class);
         startActivity(intent);
     }
