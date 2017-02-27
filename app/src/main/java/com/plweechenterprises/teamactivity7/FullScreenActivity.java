@@ -11,6 +11,7 @@ public class FullScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
+        getSupportActionBar().setTitle("Music Magi");
     }
 
     // display list of music

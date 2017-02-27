@@ -23,6 +23,7 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        getSupportActionBar().setTitle("Music Magi");
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
         ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, noteValues);
