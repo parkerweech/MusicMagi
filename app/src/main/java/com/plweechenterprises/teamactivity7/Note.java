@@ -7,13 +7,12 @@ import android.graphics.Bitmap;
  */
 
 public class Note {
+
     public String getNoteName() {
         return noteName;
     }
 
-    public void setNoteName(String noteName) {
-        this.noteName = noteName;
-    }
+    public void setNoteName(String noteName) { this.noteName = noteName; }
 
     public int getNoteValue() {
         return noteValue;
