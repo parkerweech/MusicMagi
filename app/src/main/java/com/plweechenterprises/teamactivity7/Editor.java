@@ -16,7 +16,9 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
 
     private List<Note> noteList = new ArrayList<>();
     private Note note = new Note();
-    private String[] noteValues = {"A1", "B1", "C1", "D1", "E1", "F1", "G1", "A2", "B2", "C2", "D2", "E2", "F2", "G2", "A3"};
+    private String[] noteValues = {"A1", "A1♯", "B1♭", "B1", "C1", "C1♯", "D1♭", "D1", "D1♯", "E1♭", "E1", "F1", "F1♯", "G1♭",
+            "G1", "G1♯", "A2♭", "A2", "A2♯", "B2♭", "B2", "C2", "C2♯", "D2♭", "D2", "D2♯", "E2♭", "E2", "F2", "F2♯", "G2♭",
+            "G2", "G2♯", "A3♭", "A3"};
     private String[] noteLengths = {"Eighth Note", "Dotted Eighth", "Quarter Note", "Dotted Quarter", "Half Note", "Dotted Half", "Whole Note"};
 
     @Override
