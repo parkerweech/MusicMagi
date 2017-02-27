@@ -21,7 +21,7 @@
     <Button
         android:text="Save"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Play"
         android:layout_centerHorizontal="true"
         android:id="@+id/Save"
@@ -31,7 +31,7 @@
     <Button
         android:text="Edit"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/Edit"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
@@ -40,7 +40,7 @@
     <Button
         android:text="Play"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/Play"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true" />
