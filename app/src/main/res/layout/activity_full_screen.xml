@@ -25,7 +25,8 @@
         android:layout_alignBottom="@+id/Play"
         android:layout_centerHorizontal="true"
         android:id="@+id/Save"
-        android:layout_below="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:onClick="save (FullScreenActivity)" />
 
     <Button
         android:text="Edit"
@@ -33,7 +34,8 @@
         android:layout_height="match_parent"
         android:id="@+id/Edit"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="edit (FullScreenActivity)" />
 
     <Button
         android:text="Play"
@@ -42,4 +44,5 @@
         android:id="@+id/Play"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
