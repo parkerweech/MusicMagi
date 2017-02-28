@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Editor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -44,7 +45,7 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
                                int pos, long id) {
         String tempValue = parent.getItemAtPosition(pos).toString();
 
-        if (tempValue.length() < 3) {
+        if (tempValue.length() < 4) {
             selectNote(pos, tempValue);
             //Toast.makeText(this,"Value: " + tempValue,Toast.LENGTH_SHORT).show();
         }
@@ -79,7 +80,7 @@ public class Editor extends AppCompatActivity implements AdapterView.OnItemSelec
     public void display() {
         //update display with x number of notes
         int num;
-        String someNotes = null;
+        String someNotes = new String();
 
        if(noteList.size() > 8)
             num = noteList.size() - 8;
