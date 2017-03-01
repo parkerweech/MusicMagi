@@ -1,7 +1,6 @@
 package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +33,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
         if(json.length() > 0) {
+
+            Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show();
             Gson gson = new Gson();
 
             NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
