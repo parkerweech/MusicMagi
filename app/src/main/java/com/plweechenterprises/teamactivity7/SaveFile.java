@@ -23,8 +23,8 @@ public class SaveFile extends AppCompatActivity {
     }
 
     void inputFileName() {
-        EditText editText = (EditText) findViewById(R.id.editFileName);
-        fileName = editText.getText().toString();
+        /*EditText editText = (EditText) findViewById(R.id.editFileName);
+        fileName = editText.getText().toString();*/
     }
 
     void saveFile() {
@@ -36,7 +36,7 @@ public class SaveFile extends AppCompatActivity {
     }
 
     public void save(View view) {
-        inputFileName();
+        //inputFileName();
         saveFile();
 
         Intent intent = new Intent(this, MainActivity.class);
