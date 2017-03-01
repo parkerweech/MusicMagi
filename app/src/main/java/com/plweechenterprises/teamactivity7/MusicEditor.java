@@ -37,7 +37,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             Gson gson = new Gson();
 
             NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
-            noteList = noteListContainer.getNoteList();
+            for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
+                noteList.add(noteListContainer.getNoteList().get(i));
+            }
         }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
