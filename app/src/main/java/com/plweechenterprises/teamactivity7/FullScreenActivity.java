@@ -31,9 +31,9 @@ public class FullScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Change view to Editor screen
+    // Change view to MusicEditor screen
     public void edit(View view) {
-        Intent intent = new Intent(this, Editor.class);
+        Intent intent = new Intent(this, MusicEditor.class);
         startActivity(intent);
     }
 }

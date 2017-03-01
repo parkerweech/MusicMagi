@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CreateNew(View view) {
-        Intent intent = new Intent(this, Editor.class);
+        Intent intent = new Intent(this, MusicEditor.class);
         startActivity(intent);
     }
 

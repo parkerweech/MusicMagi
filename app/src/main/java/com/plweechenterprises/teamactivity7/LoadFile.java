@@ -26,7 +26,7 @@ public class LoadFile extends AppCompatActivity {
     }
 
     public void Load(View view) {
-        Intent intent = new Intent(this,Editor.class);
+        Intent intent = new Intent(this,MusicEditor.class);
         startActivity(intent);
     }
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Editor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MusicEditor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private List<Note> noteList = new ArrayList<>();
     private Note note = new Note();
