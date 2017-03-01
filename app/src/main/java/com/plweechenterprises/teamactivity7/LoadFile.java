@@ -16,16 +16,16 @@ public class LoadFile extends AppCompatActivity {
 
     String fileName;
 
-    String GetFileName() {
+    String getFileName() {
 
         return "fileName goes here";
     }
 
-    void OpenFile() {
+    void openFile() {
 
     }
 
-    public void Load(View view) {
+    public void load(View view) {
         Intent intent = new Intent(this,MusicEditor.class);
         startActivity(intent);
     }

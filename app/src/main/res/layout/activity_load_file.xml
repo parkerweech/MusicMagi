@@ -26,5 +26,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="127dp"
         android:id="@+id/button2"
-        android:onClick=""/>
+        android:onClick="load"/>
 </RelativeLayout>

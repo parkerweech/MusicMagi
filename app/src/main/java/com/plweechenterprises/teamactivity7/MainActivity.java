@@ -14,12 +14,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Music Magi");
     }
 
-    public void CreateNew(View view) {
+    public void createNew(View view) {
         Intent intent = new Intent(this, MusicEditor.class);
         startActivity(intent);
     }
 
-    public void LoadExisting(View view) {
+    public void loadExisting(View view) {
         Intent intent = new Intent(this,LoadFile.class);
         startActivity(intent);
     }
