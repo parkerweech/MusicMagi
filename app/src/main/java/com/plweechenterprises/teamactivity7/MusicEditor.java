@@ -31,10 +31,12 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_editor);
         getSupportActionBar().setTitle("Music Magi");
 
-        /*Intent intent = getIntent();
+        Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
-        Gson gson = new Gson();
-        noteList = gson.fromJson(json, ArrayList.class);*/
+        if(json.length() > 0) {
+            Gson gson = new Gson();
+            noteList = gson.fromJson(json, ArrayList.class);
+        }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
         ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, noteValues);

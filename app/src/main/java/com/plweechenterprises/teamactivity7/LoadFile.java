@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 
 public class LoadFile extends AppCompatActivity {
 
-    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class LoadFile extends AppCompatActivity {
     }
 
     String openFile() {
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
         String json = mPrefs.getString("fileName", "");
         return json;
     }
