@@ -25,7 +25,7 @@ public class SaveFile extends AppCompatActivity {
     }
 
     public void save(View view) {
-        Intent intent = new Intent(this, Editor.class);
+        Intent intent = new Intent(this, MusicEditor.class);
         startActivity(intent);
     }
 
