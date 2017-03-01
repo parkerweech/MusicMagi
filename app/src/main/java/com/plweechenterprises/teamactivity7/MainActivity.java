@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadExisting(View view) {
-        Intent intent = new Intent(this,LoadFile.class);
+        Intent intent = new Intent(this, LoadFile.class);
         startActivity(intent);
     }
 }

@@ -10,39 +10,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.plweechenterprises.teamactivity7.FullScreenActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_height="430dp" />
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Play"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/Save"
-        android:layout_below="@+id/textView"
-        android:onClick="save" />
-
     <Button
         android:text="Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Edit"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:onClick="edit" />
+        android:onClick="edit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Save"
+        android:onClick="save"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Play"
-        android:layout_below="@+id/textView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Edit"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class LoadFile extends AppCompatActivity {
     }
 
     public void load(View view) {
-        Intent intent = new Intent(this,MusicEditor.class);
+        Intent intent = new Intent(this, MusicEditor.class);
         String json = openFile();
         intent.putExtra("notes", json);
         startActivity(intent);
