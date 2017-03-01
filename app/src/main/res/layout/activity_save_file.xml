@@ -41,5 +41,5 @@
         android:id="@+id/button"
         android:layout_below="@+id/editFileName"
         android:layout_centerHorizontal="true"
-        android:onClick=""/>
+        android:onClick="save"/>
 </RelativeLayout>
