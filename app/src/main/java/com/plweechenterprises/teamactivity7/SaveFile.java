@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 
 public class SaveFile extends AppCompatActivity {
 
@@ -22,7 +23,8 @@ public class SaveFile extends AppCompatActivity {
     }
 
     void inputFileName() {
-
+        EditText editText = (EditText) findViewById(R.id.editFileName);
+        fileName = editText.getText().toString();
     }
 
     void saveFile() {
@@ -36,7 +38,7 @@ public class SaveFile extends AppCompatActivity {
     public void save(View view) {
         saveFile();
 
-        Intent intent = new Intent(this, MusicEditor.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
