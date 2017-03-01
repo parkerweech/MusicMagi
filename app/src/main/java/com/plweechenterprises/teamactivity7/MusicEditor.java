@@ -35,7 +35,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         String json = intent.getStringExtra("notes");
         if(json.length() > 0) {
             Gson gson = new Gson();
-            noteList = gson.fromJson(json, ArrayList.class);
+
+            NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
+            noteList = noteListContainer.getNoteList();
         }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
@@ -117,8 +119,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void save(View view) {
         //change view to Save activity
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
-        String json = gson.toJson(noteList);
+        String json = gson.toJson(noteListContainer);
 
         Intent intent = new Intent(this, SaveFile.class);
         intent.putExtra("notes", json);
