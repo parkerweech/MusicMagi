@@ -111,7 +111,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     public void save(View view) {
         //change view to Save activity
         Gson gson = new Gson();
-        String json = gson.toJson(noteList); // myObject - instance of MyObject
+        String json = gson.toJson(noteList);
 
         Intent intent = new Intent(this, SaveFile.class);
         intent.putExtra("notes", json);
