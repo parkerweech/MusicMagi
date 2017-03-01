@@ -1,6 +1,7 @@
 package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -107,7 +110,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void save(View view) {
         //change view to Save activity
+        Gson gson = new Gson();
+        String json = gson.toJson(noteList); // myObject - instance of MyObject
+
         Intent intent = new Intent(this, SaveFile.class);
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 
