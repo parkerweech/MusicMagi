@@ -27,7 +27,7 @@ public class LoadFile extends AppCompatActivity {
     }
 
     String openFile() {
-        String json = mPrefs.getString("MyObject", "");
+        String json = mPrefs.getString("fileName", "");
         return json;
     }
 
