@@ -31,11 +31,12 @@ public class SaveFile extends AppCompatActivity {
         SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        prefsEditor.putString("FileName", noteList);
+        prefsEditor.putString("fileName", noteList);
         prefsEditor.commit();
     }
 
     public void save(View view) {
+        inputFileName();
         saveFile();
 
         Intent intent = new Intent(this, MainActivity.class);
