@@ -34,6 +34,7 @@ public class FullScreenActivity extends AppCompatActivity {
     // Change view to MusicEditor screen
     public void edit(View view) {
         Intent intent = new Intent(this, MusicEditor.class);
+        intent.putExtra("notes", "");
         startActivity(intent);
     }
 }
