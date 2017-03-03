@@ -87,7 +87,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void addNote(View view) {
         //adds note to noteList
-        noteList.add(note);
+        Note newNote = new Note();
+        newNote.setNoteValue(note.getNoteValue());
+        newNote.setNoteName(note.getNoteName());
+        newNote.setNoteLength(note.getNoteLength());
+        noteList.add(newNote);
         Toast.makeText(this,"Note added " + note.getNoteName(),Toast.LENGTH_SHORT).show();
         display();
     }
