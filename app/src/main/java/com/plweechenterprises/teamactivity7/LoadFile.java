@@ -2,6 +2,7 @@ package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ public class LoadFile extends AppCompatActivity {
     }
 
     String openFile() {
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String json = mPrefs.getString("fileName", "");
         return json;
     }
