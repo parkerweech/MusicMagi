@@ -3,6 +3,7 @@ package com.plweechenterprises.teamactivity7;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +29,8 @@ public class SaveFile extends AppCompatActivity {
     }
 
     void saveFile() {
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         prefsEditor.putString("fileName", noteList);
