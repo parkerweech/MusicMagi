@@ -30,7 +30,6 @@ public class SaveFile extends AppCompatActivity {
     }
 
     void saveFile() {
-
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
