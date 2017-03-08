@@ -5,12 +5,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 public class SaveFile extends AppCompatActivity {
 
-    String fileName;
+    String filename;
     String noteList;
 
     @Override
@@ -24,8 +25,8 @@ public class SaveFile extends AppCompatActivity {
     }
 
     void inputFileName() {
-        /*EditText editText = (EditText) findViewById(R.id.editFileName);
-        fileName = editText.getText().toString();*/
+        EditText editText = (EditText) findViewById(R.id.editFileName);
+        filename = editText.getText().toString();
     }
 
     void saveFile() {
@@ -33,12 +34,13 @@ public class SaveFile extends AppCompatActivity {
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        prefsEditor.putString("fileName", noteList);
+        prefsEditor.putString(filename, noteList);
         prefsEditor.commit();
     }
 
     public void save(View view) {
-        //inputFileName();
+        inputFileName();
+        Log.d("Filename in save method", " Filename is: " + filename);
         saveFile();
 
         Intent intent = new Intent(this, MainActivity.class);
