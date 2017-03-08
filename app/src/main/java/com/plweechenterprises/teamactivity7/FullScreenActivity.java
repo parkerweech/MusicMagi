@@ -44,7 +44,7 @@ public class FullScreenActivity extends AppCompatActivity {
         }
     }
 
-    // start playing the all of the music in the file
+    // start playing the all of the music in the current file
     public void playFull(String json) {
 
             for (int i = 0; i <= noteList.size(); i++) {
