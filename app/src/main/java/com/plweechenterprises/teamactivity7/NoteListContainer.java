@@ -9,7 +9,9 @@ import java.util.List;
 
 public class NoteListContainer {
     public NoteListContainer(List<Note> noteList) {
-        this.noteList = noteList;
+        for(int i = 0; i < noteList.size(); i++) {
+            this.noteList.add(noteList.get(i));
+        }
     }
 
     public List<Note> getNoteList() {

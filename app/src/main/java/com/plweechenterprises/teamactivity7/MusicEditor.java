@@ -1,6 +1,9 @@
 package com.plweechenterprises.teamactivity7;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.midi.MidiInputPort;
+import android.media.midi.MidiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +22,21 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     private List<Note> noteList = new ArrayList<>();
     private Note note = new Note();
-    private String[] noteValues = {"A1", "A1♯", "B1♭", "B1", "C1", "C1♯", "D1♭", "D1", "D1♯", "E1♭", "E1", "F1", "F1♯", "G1♭",
-            "G1", "G1♯", "A2♭", "A2", "A2♯", "B2♭", "B2", "C2", "C2♯", "D2♭", "D2", "D2♯", "E2♭", "E2", "F2", "F2♯", "G2♭",
-            "G2", "G2♯", "A3♭", "A3"};
-    private String[] noteLengths = {"Eighth Note", "Dotted Eighth", "Quarter Note", "Dotted Quarter", "Half Note", "Dotted Half", "Whole Note"};
+    private String[] noteValues = {"A1" /*0*/, "A1♯"/*1*/,
+            "B1♭"/*2*/, "B1"/*3*/, "C1"/*4*/, "C1♯"/*5*/,
+            "D1♭"/*6*/, "D1"/*7*/, "D1♯"/*8*/, "E1♭"/*9*/,
+            "E1"/*10*/, "F1"/*11*/, "F1♯"/*12*/, "G1♭"/*13*/,
+            "G1"/*14*/, "G1♯"/*15*/, "A2♭"/*16*/, "A2"/*17*/,
+            "A2♯"/*18*/, "B2♭"/*19*/, "B2"/*20*/, "C2"/*21*/,
+            "C2♯"/*22*/, "D2♭"/*23*/, "D2"/*24*/, "D2♯"/*25*/,
+            "E2♭"/*26*/, "E2"/*27*/, "F2"/*28*/, "F2♯"/*29*/,
+            "G2♭"/*30*/, "G2"/*31*/, "G2♯"/*32*/, "A3♭"/*33*/,
+            "A3"/*34*/};
+    private String[] noteLengths = {"Sixteenth Note" /*0*/,
+            "Eighth Note" /*1*/,
+            "Dotted Eighth" /*2*/, "Quarter Note" /*3*/,
+            "Dotted Quarter" /*4*/, "Half Note" /*5*/,
+            "Dotted Half" /*6*/, "Whole Note" /*7*/};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +151,12 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void playMini(View view) {
         //play the music that is currently being edited
-        Intent intent = new Intent(this, FullScreenActivity.class);
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+
+        Intent intent = new Intent(this, Sound.class);
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 
