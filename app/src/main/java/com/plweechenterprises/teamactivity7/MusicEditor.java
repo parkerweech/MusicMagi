@@ -9,6 +9,7 @@ import android.media.midi.MidiInputPort;
 import android.media.midi.MidiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -154,6 +155,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
         String json = gson.toJson(noteListContainer);
+        Log.d("save", "save was called");
 
         Intent intent = new Intent(this, SaveFile.class);
         intent.putExtra("notes", json);
@@ -171,20 +173,25 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     //Playing the music!!!
 
     public void playNotes(View view) throws InterruptedException {
-        int num;
+        int num = 0;
 
-        if(noteList.size() > 8)
-            num = noteList.size() - 8;
-        else
-            num = 0;
+        Log.e("playNotes", "before if statement");
 
         while(num < noteList.size()) {
+
+            Log.e("playNotes", "first line of while loop");
             freqOfTone = noteList.get(num).getNoteFrequency();
+            Log.e("playNotes", "just set frequency");
             length = noteList.get(num).getNoteDuration();
+            Log.e("playNotes", "just set duration");
 
             genTone();
+            Log.e("playNotes", "just generated the tone");
             playSound();
-            Thread.sleep((int) (2000 / length));
+            Log.e("playNotes", "just played the sounds");
+
+            Log.e("playNotes", "just slept");
+
 
             num++;
         }
@@ -209,13 +216,15 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
-    void playSound(){
+    void playSound() throws InterruptedException {
         final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
                 sampleRate, AudioFormat.CHANNEL_OUT_MONO,
                 AudioFormat.ENCODING_PCM_16BIT, generatedSnd.length,
                 AudioTrack.MODE_STATIC);
         audioTrack.write(generatedSnd, 0, (int) (generatedSnd.length / length));
         audioTrack.play();
+        Thread.sleep((int) (2000 / length));
+        audioTrack.release();
     }
 
 }
