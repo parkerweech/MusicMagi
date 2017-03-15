@@ -17,12 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ */
 public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private List<String> filenames = new ArrayList<>();
     //private String[] filenames = new String[50];
     String filename;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +54,21 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
         dropdown.setOnItemSelectedListener(this);
     }
 
+    /**
+     *
+     * @param parent
+     * @param view
+     * @param pos
+     * @param id
+     */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         filename = parent.getItemAtPosition(pos).toString();
     }
 
+    /**
+     *
+     * @param parent
+     */
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
@@ -60,12 +78,20 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
         return "fileName goes here";
     }*/
 
+    /**
+     *
+     * @return
+     */
     String openFile() {
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String json = mPrefs.getString(filename, "");
         return json;
     }
 
+    /**
+     *
+     * @param view
+     */
     public void load(View view) {
         Intent intent = new Intent(this, MusicEditor.class);
         String json = openFile();

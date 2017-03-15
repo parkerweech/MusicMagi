@@ -10,6 +10,9 @@ import android.os.Handler;
  * Created by admin on 2/22/2017.
  */
 
+/**
+ *
+ */
 public class Sound extends MusicEditor {
     // originally from http://marblemice.blogspot.com/2010/04/generate-and-play-tone-in-android.html
     // and modified by Steve Pomeroy <steve@staticfree.info>
@@ -24,12 +27,19 @@ public class Sound extends MusicEditor {
 
     Handler handler = new Handler();
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
     }
 
+    /**
+     *
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -49,6 +59,9 @@ public class Sound extends MusicEditor {
         thread.start();
     }
 
+    /**
+     *
+     */
     void genTone(){
         // fill out the array
         for (int i = 0; i < numSamples; ++i) {
@@ -68,6 +81,9 @@ public class Sound extends MusicEditor {
         }
     }
 
+    /**
+     *
+     */
     void playSound(){
         final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
                 sampleRate, AudioFormat.CHANNEL_OUT_MONO,

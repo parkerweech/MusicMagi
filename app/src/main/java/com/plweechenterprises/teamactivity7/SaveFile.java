@@ -9,11 +9,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ *
+ */
 public class SaveFile extends AppCompatActivity {
 
     String filename;
     String noteList;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +31,17 @@ public class SaveFile extends AppCompatActivity {
         noteList = intent.getStringExtra("notes");
     }
 
+    /**
+     *
+     */
     void inputFileName() {
         EditText editText = (EditText) findViewById(R.id.editFileName);
         filename = editText.getText().toString();
     }
 
+    /**
+     *
+     */
     void saveFile() {
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -37,6 +50,10 @@ public class SaveFile extends AppCompatActivity {
         prefsEditor.commit();
     }
 
+    /**
+     *
+     * @param view
+     */
     public void save(View view) {
         inputFileName();
         Log.d("Filename in save method", " Filename is: " + filename);
@@ -45,5 +62,4 @@ public class SaveFile extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
 }
