@@ -14,14 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * This class will operate the full screen activity in the app.
+ * It will take the users inputted musical notes, display them,
+ *  and if desired it will play the song.
  */
 public class FullScreenActivity extends AppCompatActivity {
 
     private List<Note> noteList = new ArrayList<>();
 
     /**
-     *
+     * This will function will initialize the activity when the
+     *  activity is started for the first time.
      * @param savedInstanceState
      */
     @Override
@@ -50,9 +53,8 @@ public class FullScreenActivity extends AppCompatActivity {
         }
 
     /**
-     *
+     * This function will display the music from the music list.
      */
-    // display list of music
     // currently the display is a scrollable view and may need to be changed
     public void displayFull() {
         for (int i = 0; i <= noteList.size(); i++) {
@@ -63,9 +65,9 @@ public class FullScreenActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function will play the full list of music from the full screen
      */
-    // start playing the all of the music in the current file
+    // start playing all of the music in the current file
     public void playFull() {
         //for (int i = 0; i <= noteList.size(); i++) {
         for (int i = 0; i <= 5; i++)
@@ -77,7 +79,7 @@ public class FullScreenActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function will save the current list of music to the user's desired location.
      * @param view
      */
     // change view to Save File screen
@@ -87,7 +89,7 @@ public class FullScreenActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function will send you to the edit screen to make changes to the music list.
      * @param view
      */
     // Change view to MusicEditor screen
