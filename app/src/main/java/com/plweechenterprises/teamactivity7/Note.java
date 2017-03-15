@@ -22,56 +22,55 @@ public class Note {
         this.noteValue = noteValue;
 
         if (noteValue == 0)
-            noteFrequency = 55;
-        else if (noteValue == 1 || noteValue == 2)
-            noteFrequency = 58.27;
-        else if (noteValue == 3)
-            noteFrequency = 61.74;
-        else if (noteValue == 4)
-            noteFrequency = 65.41;
-        else if (noteValue == 5 || noteValue == 6)
-            noteFrequency = 69.30;
-        else if (noteValue == 7)
-            noteFrequency = 73.42;
-        else if (noteValue == 8 || noteValue == 9)
-            noteFrequency = 77.78;
-        else if (noteValue == 10)
-            noteFrequency = 82.41;
-        else if (noteValue == 11)
-            noteFrequency = 87.31;
-        else if (noteValue == 12 || noteValue == 13)
-            noteFrequency = 92.50;
-        else if (noteValue == 14)
-            noteFrequency = 98;
-        else if (noteValue == 15 || noteValue == 16)
-            noteFrequency = 103.83;
-        else if (noteValue == 17)
-            noteFrequency = 110;
-        else if (noteValue == 18 || noteValue == 19)
-            noteFrequency = 116.54;
-        else if (noteValue == 20)
-            noteFrequency = 123.47;
-        else if (noteValue == 21)
-            noteFrequency = 130.81;
-        else if (noteValue == 22 || noteValue == 23)
-            noteFrequency = 138.59;
-        else if (noteValue == 24)
-            noteFrequency = 146.83;
-        else if (noteValue == 25 || noteValue == 26)
-            noteFrequency = 155.56;
-        else if (noteValue == 27)
-            noteFrequency = 164.81;
-        else if (noteValue == 28)
-            noteFrequency = 174.61;
-        else if (noteValue == 29 || noteValue == 30)
-            noteFrequency = 185;
-        else if (noteValue == 31)
-            noteFrequency = 196;
-        else if (noteValue == 32 || noteValue == 33)
-            noteFrequency = 207.65;
-        else if (noteValue == 34)
             noteFrequency = 220;
-
+        else if (noteValue == 1 || noteValue == 2)
+            noteFrequency = 233.082;
+        else if (noteValue == 3)
+            noteFrequency = 246.942;
+        else if (noteValue == 4)
+            noteFrequency = 261.626;
+        else if (noteValue == 5 || noteValue == 6)
+            noteFrequency = 277.183;
+        else if (noteValue == 7)
+            noteFrequency = 293.665;
+        else if (noteValue == 8 || noteValue == 9)
+            noteFrequency = 311.127;
+        else if (noteValue == 10)
+            noteFrequency = 329.628;
+        else if (noteValue == 11)
+            noteFrequency = 349.228;
+        else if (noteValue == 12 || noteValue == 13)
+            noteFrequency = 369.994;
+        else if (noteValue == 14)
+            noteFrequency = 391.995;
+        else if (noteValue == 15 || noteValue == 16)
+            noteFrequency = 415.305;
+        else if (noteValue == 17)
+            noteFrequency = 440;
+        else if (noteValue == 18 || noteValue == 19)
+            noteFrequency = 466.164;
+        else if (noteValue == 20)
+            noteFrequency = 493.883;
+        else if (noteValue == 21)
+            noteFrequency = 523.251;
+        else if (noteValue == 22 || noteValue == 23)
+            noteFrequency = 554.365;
+        else if (noteValue == 24)
+            noteFrequency = 587.330;
+        else if (noteValue == 25 || noteValue == 26)
+            noteFrequency = 622.254;
+        else if (noteValue == 27)
+            noteFrequency = 659.255;
+        else if (noteValue == 28)
+            noteFrequency = 698.456;
+        else if (noteValue == 29 || noteValue == 30)
+            noteFrequency = 739.989;
+        else if (noteValue == 31)
+            noteFrequency = 783.991;
+        else if (noteValue == 32 || noteValue == 33)
+            noteFrequency = 830.609;
+        else if (noteValue == 34)
+            noteFrequency = 880;
     }
 
     public int getNoteLength() {
@@ -110,7 +109,6 @@ public class Note {
             default:
                 break;
         }
-
     }
 
     private String noteName;

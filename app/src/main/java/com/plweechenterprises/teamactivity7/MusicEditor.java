@@ -197,7 +197,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
             genTone();
             playSound();
-            Thread.sleep((int) (2000 / 1));
+            Thread.sleep((int) (2000 / length));
 
             num++;
         }
