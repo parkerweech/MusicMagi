@@ -166,8 +166,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-
-
     //Playing the music!!!
 
     public void playNotes(View view) throws InterruptedException {
