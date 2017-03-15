@@ -39,8 +39,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     private String[] noteLengths = {"Sixteenth Note" /*0*/,
             "Eighth Note" /*1*/,
             "Dotted Eighth" /*2*/, "Quarter Note" /*3*/,
-            "Dotted Quarter" /*4*/, "Half Note" /*5*/,
-            "Dotted Half" /*6*/, "Whole Note" /*7*/};
+            "Dotted Quarter" /*4*/, "Half Note" /*5*/};
 
     private final int sampleRate = 8000;
     private final int numSamples = sampleRate;
