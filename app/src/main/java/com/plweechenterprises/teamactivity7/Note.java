@@ -74,28 +74,28 @@ public class Note {
 
         switch (noteLength) {
             case 0:
-                noteDuration = .25;
+                noteDuration = 16;          // 2/16 = .125 seconds
                 break;
             case 1:
-                noteDuration = .5;
+                noteDuration = 8;           // 2/8 = .25 seconds
                 break;
             case 2:
-                noteDuration = .75;
+                noteDuration = 2/.375;      // 2/(2/.375) = .375 seconds
                 break;
             case 3:
-                noteDuration = 1;
+                noteDuration = 4;           // 2/4 = .5 seconds
                 break;
             case 4:
-                noteDuration = 1.5;
+                noteDuration = 2/.75;       // 2/(2/.75) = .75 seconds
                 break;
             case 5:
-                noteDuration = 2;
+                noteDuration = 2;           // 2/2 = 1 seconds
                 break;
             case 6:
-                noteDuration = 3;
+                noteDuration = 4/3;         // 2/(4/3) = 1.5 seconds
                 break;
             case 7:
-                noteDuration = 4;
+                noteDuration = 1;           // 2/1 = 2 seconds
                 break;
             default:
                 break;
@@ -113,6 +113,15 @@ public class Note {
     private String noteName;
     private int noteValue;
     private int noteLength;
+
+    public double getNoteFrequency() {
+        return noteFrequency;
+    }
+
+    public double getNoteDuration() {
+        return noteDuration;
+    }
+
     private double noteFrequency;
     private double noteDuration;
 }
