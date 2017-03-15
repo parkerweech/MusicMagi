@@ -27,7 +27,7 @@
         android:layout_alignTop="@+id/fullScreen_button"
         android:layout_centerHorizontal="true"
         android:id="@+id/play_button"
-        android:onClick="playMini"/>
+        android:onClick="playNotes"/>
 
     <Button
         android:text="Save"

@@ -2,6 +2,9 @@ package com.plweechenterprises.teamactivity7;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.media.midi.MidiInputPort;
 import android.media.midi.MidiManager;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +41,13 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             "Dotted Quarter" /*4*/, "Half Note" /*5*/,
             "Dotted Half" /*6*/, "Whole Note" /*7*/};
 
+    private final int sampleRate = 8000;
+    private final int numSamples = sampleRate;
+    private final double sample[] = new double[numSamples];
+    private double freqOfTone = note.getNoteFrequency(); // hz
+    private final byte generatedSnd[] = new byte[4 * numSamples];
+    private double length = note.getNoteDuration();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +78,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         lengthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown2.setAdapter(lengthAdapter);
         dropdown2.setOnItemSelectedListener(this);
+
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
@@ -106,7 +117,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         newNote.setNoteName(note.getNoteName());
         newNote.setNoteLength(note.getNoteLength());
         noteList.add(newNote);
-        Toast.makeText(this,"Note added " + note.getNoteName(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Note added " + note.getNoteLength(),Toast.LENGTH_SHORT).show();
         display();
     }
 
@@ -149,7 +160,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-    public void playMini(View view) {
+    /*public void playMini(View view) {
         //play the music that is currently being edited
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -158,12 +169,66 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         Intent intent = new Intent(this, Sound.class);
         intent.putExtra("notes", json);
         startActivity(intent);
-    }
+    }*/
 
     public void fullScreen(View view) {
         //change view to FullScreen activity
         Intent intent = new Intent(this, FullScreenActivity.class);
         startActivity(intent);
+    }
+
+
+
+    //Playing the music!!!
+
+    public void playNotes(View view) throws InterruptedException {
+        int num;
+
+        if(noteList.size() > 8)
+            num = noteList.size() - 8;
+        else
+            num = 0;
+
+        while(num < noteList.size()) {
+            //freqOfTone = noteList.get(num).getNoteFrequency();
+            length = noteList.get(num).getNoteDuration();
+
+            freqOfTone = 440;
+
+            genTone();
+            playSound();
+            Thread.sleep((int) (2000 / 1));
+
+            num++;
+        }
+    }
+
+    void genTone(){
+        // fill out the array
+        for (int i = 0; i < numSamples; ++i) {
+            sample[i] = Math.sin(2 * Math.PI * i / (sampleRate/freqOfTone));
+        }
+
+        // convert to 16 bit pcm sound array
+        // assumes the sample buffer is normalised.
+        int idx = 0;
+        for (final double dVal : sample) {
+            // scale to maximum amplitude
+            final short val = (short) ((dVal * 32767));
+            // in 16 bit wav PCM, first byte is the low order byte
+            generatedSnd[idx++] = (byte) (val & 0x00ff);
+            generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
+
+        }
+    }
+
+    void playSound(){
+        final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+                sampleRate, AudioFormat.CHANNEL_OUT_MONO,
+                AudioFormat.ENCODING_PCM_16BIT, generatedSnd.length,
+                AudioTrack.MODE_STATIC);
+        audioTrack.write(generatedSnd, 0, (int) (generatedSnd.length / length));
+        audioTrack.play();
     }
 
 }
