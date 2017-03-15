@@ -160,17 +160,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-    /*public void playMini(View view) {
-        //play the music that is currently being edited
-        NoteListContainer noteListContainer = new NoteListContainer(noteList);
-        Gson gson = new Gson();
-        String json = gson.toJson(noteListContainer);
-
-        Intent intent = new Intent(this, Sound.class);
-        intent.putExtra("notes", json);
-        startActivity(intent);
-    }*/
-
     public void fullScreen(View view) {
         //change view to FullScreen activity
         Intent intent = new Intent(this, FullScreenActivity.class);
@@ -190,10 +179,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             num = 0;
 
         while(num < noteList.size()) {
-            //freqOfTone = noteList.get(num).getNoteFrequency();
+            freqOfTone = noteList.get(num).getNoteFrequency();
             length = noteList.get(num).getNoteDuration();
-
-            freqOfTone = 440;
 
             genTone();
             playSound();
