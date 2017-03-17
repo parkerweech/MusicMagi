@@ -22,22 +22,24 @@
         android:textSize="18sp" />
 
     <Button
-        android:text="Create New Project"
+        android:id="@+id/button3"
+        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:id="@+id/button3"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:onClick="createNew" />
+        android:layout_marginTop="64dp"
+        android:onClick="createNew"
+        android:text="Create New Project" />
 
     <Button
-        android:text="Load Existing Project"
+        android:id="@+id/button4"
+        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:id="@+id/button4"
         android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
-        android:onClick="loadExisting"/>
+        android:layout_marginTop="12dp"
+        android:onClick="loadExisting"
+        android:text="Load Existing Project" />
 </RelativeLayout>

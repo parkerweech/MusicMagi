@@ -80,31 +80,35 @@
         android:src="@drawable/quarter_note"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/note9" />
+
     <Button
-        android:text="Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/Edit"
+        style="@android:style/Widget.Material.Button.Inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:onClick="edit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:text="Edit" />
 
     <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/Save"
-        android:onClick="save"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Play"
+        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Play"
-        android:onClick="playFull"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="save"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/Play"
+        style="@android:style/Widget.Material.Button.Inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="playFull"
+        android:text="Play" />
 
 </RelativeLayout>
