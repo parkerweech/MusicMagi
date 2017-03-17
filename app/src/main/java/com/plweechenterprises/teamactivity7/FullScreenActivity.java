@@ -39,7 +39,6 @@ public class FullScreenActivity extends AppCompatActivity {
 
         if(json.length() > 0) {
             Log.d("List of notes", "Deserializing the note list");
-            Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
 
             Gson gson = new Gson();
 
@@ -74,13 +73,13 @@ public class FullScreenActivity extends AppCompatActivity {
      */
     // start playing all of the music in the current file
     public void playFull() {
-        //for (int i = 0; i <= noteList.size(); i++) {
-        for (int i = 0; i <= 5; i++)
-        {
+        /*
+        for (int i = 0; i <= noteList.size(); i++) {
             // play note
             Toast.makeText(this, "We are looping!!", Toast.LENGTH_SHORT).show();
             i++;
         }
+        */
     }
 
     /**
