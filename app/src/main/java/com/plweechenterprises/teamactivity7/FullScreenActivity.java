@@ -47,7 +47,6 @@ public class FullScreenActivity extends AppCompatActivity {
                 for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
                     noteList.add(noteListContainer.getNoteList().get(i));
                 }
-
             }
         }
 
