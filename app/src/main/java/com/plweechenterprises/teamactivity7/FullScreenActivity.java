@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -40,21 +41,27 @@ public class FullScreenActivity extends AppCompatActivity {
             Log.d("List of notes", "Deserializing the note list");
             Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
 
-                Gson gson = new Gson();
+            Gson gson = new Gson();
 
-                NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
+            NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
 
-                for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
-                    noteList.add(noteListContainer.getNoteList().get(i));
-                }
+            for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
+                noteList.add(noteListContainer.getNoteList().get(i));
             }
         }
+        displayFull();
+    }
 
     /**
      * This function will display the music from the music list.
      */
     // currently the display is a scrollable view and may need to be changed
     public void displayFull() {
+
+        ImageView myImageView = (ImageView)findViewById(R.id.note1);
+        // supossing to have an image called ic_play inside my drawables.
+        myImageView.setImageResource(R.drawable.eighth_note);
+
         for (int i = 0; i <= noteList.size(); i++) {
             // Display note
 
