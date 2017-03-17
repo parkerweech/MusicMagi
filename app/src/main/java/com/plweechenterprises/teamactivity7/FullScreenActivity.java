@@ -36,8 +36,7 @@ public class FullScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
 
-        // if(json.length() > 0) {
-        if(1 > 0) {
+        if(json.length() > 0) {
             Log.d("List of notes", "Deserializing the note list");
             Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
 
@@ -45,9 +44,9 @@ public class FullScreenActivity extends AppCompatActivity {
 
                 NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
 
-                //for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
-                    // noteList.add(noteListContainer.getNoteList().get(i));
-                //}
+                for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
+                    noteList.add(noteListContainer.getNoteList().get(i));
+                }
 
             }
         }

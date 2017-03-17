@@ -163,7 +163,13 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void fullScreen(View view) {
         //change view to FullScreen activity
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+        Log.d("fullScreen", "fullScreen was called");
+
         Intent intent = new Intent(this, FullScreenActivity.class);
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 
