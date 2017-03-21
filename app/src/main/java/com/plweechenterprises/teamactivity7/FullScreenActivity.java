@@ -156,7 +156,13 @@ public class FullScreenActivity extends AppCompatActivity {
      */
     // change view to Save File screen
     public void save(View view) {
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+        Log.d("fullScreen", "fullScreen was called");
+
         Intent intent = new Intent(this, SaveFile.class);
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 
@@ -166,8 +172,13 @@ public class FullScreenActivity extends AppCompatActivity {
      */
     // Change view to MusicEditor screen
     public void edit(View view) {
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+        Log.d("fullScreen", "fullScreen was called");
+
         Intent intent = new Intent(this, MusicEditor.class);
-        intent.putExtra("notes", "");
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 }
