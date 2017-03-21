@@ -12,7 +12,6 @@
 
     <Button
         android:id="@+id/Edit"
-        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -22,7 +21,6 @@
 
     <Button
         android:id="@+id/Save"
-        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -32,7 +30,6 @@
 
     <Button
         android:id="@+id/Play"
-        style="@android:style/Widget.Material.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

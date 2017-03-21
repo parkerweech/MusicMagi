@@ -1,11 +1,13 @@
 package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,6 +38,18 @@ public class FullScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
         getSupportActionBar().setTitle("Music Magi");
+
+        Button button = (Button)findViewById(R.id.Edit);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
+
+        button = (Button)findViewById(R.id.Save);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
+
+        button = (Button)findViewById(R.id.Play);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
