@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -58,14 +60,35 @@ public class FullScreenActivity extends AppCompatActivity {
     // currently the display is a scrollable view and may need to be changed
     public void displayFull() {
 
-        ImageView myImageView = (ImageView)findViewById(R.id.note1);
-        // supossing to have an image called ic_play inside my drawables.
-        myImageView.setImageResource(R.drawable.eighth_note);
+        //initial location for first note
+        int noteX = 0;
+        int noteY = 50;
 
-        for (int i = 0; i <= noteList.size(); i++) {
-            // Display note
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_full_screen);
 
-            i++;
+        for(int i = 1; i < 25; i++) {
+            ImageView image = new ImageView(this);
+            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            image.setX(noteX);
+            image.setY(noteY);
+            noteX += 125;
+
+            //determine type of note to display
+            if (i % 2 == 0) {
+                image.setImageResource(R.drawable.eighth_note);
+            }
+            else {
+                image.setImageResource(R.drawable.half_note);
+            }
+
+            //start a new line
+            if (i % 8 == 0){
+                noteY += 200;
+                noteX = 0;
+            }
+
+            // Adds the view to the layout
+            layout.addView(image);
         }
     }
 
