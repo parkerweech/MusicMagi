@@ -66,7 +66,8 @@ public class FullScreenActivity extends AppCompatActivity {
 
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_full_screen);
 
-        for(int i = 1; i < 25; i++) {
+        //for(int i = 1; i < 25; i++) {
+        for(int i = 0; i < noteList.size(); i++) {
             ImageView image = new ImageView(this);
             image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
             image.setX(noteX);
@@ -74,15 +75,39 @@ public class FullScreenActivity extends AppCompatActivity {
             noteX += 125;
 
             //determine type of note to display
-            if (i % 2 == 0) {
+            /*if (i % 2 == 0) {
                 image.setImageResource(R.drawable.eighth_note);
             }
             else {
                 image.setImageResource(R.drawable.half_note);
+            }*/
+
+            switch (noteList.get(i).getNoteLength()){
+                case 0:
+                    image.setImageResource(R.drawable.sixteenth_image);
+                    break;
+                case 1:
+                    image.setImageResource(R.drawable.eighth_note);
+                    break;
+                case 2:
+                    image.setImageResource(R.drawable.dotted_eighth_note);
+                    break;
+                case 3:
+                    image.setImageResource(R.drawable.quarter_note);
+                    break;
+                case 4:
+                    image.setImageResource(R.drawable.dotted_quarter_note);
+                    break;
+                case 5:
+                    image.setImageResource(R.drawable.half_note);
+                    break;
+                default:
+                    image.setImageResource(R.drawable.whole_note);
+                    break;
             }
 
             //start a new line
-            if (i % 8 == 0){
+            if ((i+1) % 8 == 0){
                 noteY += 200;
                 noteX = 0;
             }
