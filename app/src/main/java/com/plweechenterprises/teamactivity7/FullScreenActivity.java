@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -63,10 +64,11 @@ public class FullScreenActivity extends AppCompatActivity {
         //initial location for first note
         int noteX = 0;
         int noteY = 50;
+        int textX = 30;
+        int textY = 150;
 
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_full_screen);
 
-        //for(int i = 1; i < 25; i++) {
         for(int i = 0; i < noteList.size(); i++) {
             ImageView image = new ImageView(this);
             image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
@@ -74,14 +76,14 @@ public class FullScreenActivity extends AppCompatActivity {
             image.setY(noteY);
             noteX += 125;
 
-            //determine type of note to display
-            /*if (i % 2 == 0) {
-                image.setImageResource(R.drawable.eighth_note);
-            }
-            else {
-                image.setImageResource(R.drawable.half_note);
-            }*/
+            TextView text = new TextView(this);
+            text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            text.setX(textX);
+            text.setY(textY);
+            text.setText(noteList.get(i).getNoteName());
+            textX += 125;
 
+            //determine type of note to display
             switch (noteList.get(i).getNoteLength()){
                 case 0:
                     image.setImageResource(R.drawable.sixteenth_image);
@@ -110,10 +112,13 @@ public class FullScreenActivity extends AppCompatActivity {
             if ((i+1) % 8 == 0){
                 noteY += 200;
                 noteX = 0;
+                textY += 200;
+                textX = 30;
             }
 
             // Adds the view to the layout
             layout.addView(image);
+            layout.addView(text);
         }
     }
 
