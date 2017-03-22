@@ -69,7 +69,7 @@ public class FullScreenActivity extends AppCompatActivity {
 
         if(json.length() > 0) {
             Log.d("List of notes", "Deserializing the note list");
-            Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
 
             Gson gson = new Gson();
 
