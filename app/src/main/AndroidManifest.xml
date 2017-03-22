@@ -9,17 +9,17 @@
         android:label="Music Magi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FullScreenActivity"></activity>
-        <activity android:name=".MusicEditor"></activity>
-        <activity android:name=".SaveFile" />
-        <activity android:name=".LoadFile" ></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+        <activity android:name=".FullScreenActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MusicEditor" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SaveFile" android:screenOrientation="portrait"/>
+        <activity android:name=".LoadFile" android:screenOrientation="portrait"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"
