@@ -1,12 +1,17 @@
 package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -34,6 +39,18 @@ public class FullScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_screen);
         getSupportActionBar().setTitle("Music Magi");
 
+        Button button = (Button)findViewById(R.id.Edit);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
+
+        button = (Button)findViewById(R.id.Save);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
+
+        button = (Button)findViewById(R.id.Play);
+        button.setBackgroundColor(Color.DKGRAY);
+        button.setTextColor(Color.WHITE);
+
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
 
@@ -57,14 +74,64 @@ public class FullScreenActivity extends AppCompatActivity {
     // currently the display is a scrollable view and may need to be changed
     public void displayFull() {
 
-        ImageView myImageView = (ImageView)findViewById(R.id.note1);
-        // supossing to have an image called ic_play inside my drawables.
-        myImageView.setImageResource(R.drawable.eighth_note);
+        //initial location for first note
+        int noteX = 0;
+        int noteY = 50;
+        int textX = 30;
+        int textY = 150;
 
-        for (int i = 0; i <= noteList.size(); i++) {
-            // Display note
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_full_screen);
 
-            i++;
+        for(int i = 0; i < noteList.size(); i++) {
+            ImageView image = new ImageView(this);
+            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            image.setX(noteX);
+            image.setY(noteY);
+            noteX += 125;
+
+            TextView text = new TextView(this);
+            text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            text.setX(textX);
+            text.setY(textY);
+            text.setText(noteList.get(i).getNoteName());
+            textX += 125;
+
+            //determine type of note to display
+            switch (noteList.get(i).getNoteLength()){
+                case 0:
+                    image.setImageResource(R.drawable.sixteenth_image);
+                    break;
+                case 1:
+                    image.setImageResource(R.drawable.eighth_note);
+                    break;
+                case 2:
+                    image.setImageResource(R.drawable.dotted_eighth_note);
+                    break;
+                case 3:
+                    image.setImageResource(R.drawable.quarter_note);
+                    break;
+                case 4:
+                    image.setImageResource(R.drawable.dotted_quarter_note);
+                    break;
+                case 5:
+                    image.setImageResource(R.drawable.half_note);
+                    break;
+                default:
+                    image.setImageResource(R.drawable.whole_note);
+                    break;
+            }
+
+            //start a new line
+            if ((i+1) % 8 == 0){
+                noteY += 200;
+                noteX = 0;
+                textY += 200;
+                textX = 30;
+            }
+
+            // Adds the view to the layout
+            layout.addView(image);
+            layout.addView(text);
         }
     }
 
@@ -88,7 +155,13 @@ public class FullScreenActivity extends AppCompatActivity {
      */
     // change view to Save File screen
     public void save(View view) {
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+        Log.d("fullScreen", "fullScreen was called");
+
         Intent intent = new Intent(this, SaveFile.class);
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 
@@ -98,8 +171,13 @@ public class FullScreenActivity extends AppCompatActivity {
      */
     // Change view to MusicEditor screen
     public void edit(View view) {
+        NoteListContainer noteListContainer = new NoteListContainer(noteList);
+        Gson gson = new Gson();
+        String json = gson.toJson(noteListContainer);
+        Log.d("fullScreen", "fullScreen was called");
+
         Intent intent = new Intent(this, MusicEditor.class);
-        intent.putExtra("notes", "");
+        intent.putExtra("notes", json);
         startActivity(intent);
     }
 }
