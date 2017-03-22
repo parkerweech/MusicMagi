@@ -50,6 +50,7 @@ public class FullScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_screen);
         getSupportActionBar().setTitle("Music Magi");
 
+        /*
         Button button = (Button)findViewById(R.id.Edit);
         button.setBackgroundColor(Color.DKGRAY);
         button.setTextColor(Color.WHITE);
@@ -61,6 +62,7 @@ public class FullScreenActivity extends AppCompatActivity {
         button = (Button)findViewById(R.id.Play);
         button.setBackgroundColor(Color.DKGRAY);
         button.setTextColor(Color.WHITE);
+        */
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
