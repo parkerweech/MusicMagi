@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="playFull"
+        android:onClick="playNotes"
         android:text="Play" />
 
 </RelativeLayout>

@@ -2,6 +2,9 @@ package com.plweechenterprises.teamactivity7;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +30,14 @@ import java.util.List;
 public class FullScreenActivity extends AppCompatActivity {
 
     private List<Note> noteList = new ArrayList<>();
+    private Note note = new Note();
+
+    private final int sampleRate = 8000;
+    private final int numSamples = sampleRate;
+    private final double sample[] = new double[numSamples];
+    private double freqOfTone = note.getNoteFrequency(); // hz
+    private final byte generatedSnd[] = new byte[4 * numSamples];
+    private double length = note.getNoteDuration();
 
     /**
      * This will function will initialize the activity when the
@@ -56,6 +67,7 @@ public class FullScreenActivity extends AppCompatActivity {
 
         if(json.length() > 0) {
             Log.d("List of notes", "Deserializing the note list");
+            Toast.makeText(this, "Deserializing the note list", Toast.LENGTH_SHORT).show();
 
             Gson gson = new Gson();
 
@@ -136,20 +148,6 @@ public class FullScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * This function will play the full list of music from the full screen
-     */
-    // start playing all of the music in the current file
-    public void playFull() {
-        /*
-        for (int i = 0; i <= noteList.size(); i++) {
-            // play note
-            Toast.makeText(this, "We are looping!!", Toast.LENGTH_SHORT).show();
-            i++;
-        }
-        */
-    }
-
-    /**
      * This function will save the current list of music to the user's desired location.
      * @param view
      */
@@ -179,5 +177,64 @@ public class FullScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MusicEditor.class);
         intent.putExtra("notes", json);
         startActivity(intent);
+    }
+
+    /**
+     * This function will play the full list of music from the full screen
+     */
+    // start playing all of the music in the current file
+    public void playNotes(View view) throws InterruptedException {
+        int num = 0;
+
+        Log.e("playNotes", "before if statement");
+
+        while(num < noteList.size()) {
+
+            Log.e("playNotes", "first line of while loop");
+            freqOfTone = noteList.get(num).getNoteFrequency();
+            Log.e("playNotes", "just set frequency");
+            length = noteList.get(num).getNoteDuration();
+            Log.e("playNotes", "just set duration");
+
+            genTone();
+            Log.e("playNotes", "just generated the tone");
+            playSound();
+            Log.e("playNotes", "just played the sounds");
+
+            Log.e("playNotes", "just slept");
+
+
+            num++;
+        }
+    }
+
+    void genTone(){
+        // fill out the array
+        for (int i = 0; i < numSamples; ++i) {
+            sample[i] = Math.sin(2 * Math.PI * i / (sampleRate/freqOfTone));
+        }
+
+        // convert to 16 bit pcm sound array
+        // assumes the sample buffer is normalised.
+        int idx = 0;
+        for (final double dVal : sample) {
+            // scale to maximum amplitude
+            final short val = (short) ((dVal * 32767));
+            // in 16 bit wav PCM, first byte is the low order byte
+            generatedSnd[idx++] = (byte) (val & 0x00ff);
+            generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
+
+        }
+    }
+
+    void playSound() throws InterruptedException {
+        final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+                sampleRate, AudioFormat.CHANNEL_OUT_MONO,
+                AudioFormat.ENCODING_PCM_16BIT, generatedSnd.length,
+                AudioTrack.MODE_STATIC);
+        audioTrack.write(generatedSnd, 0, (int) (generatedSnd.length / length));
+        audioTrack.play();
+        Thread.sleep((int) (2000 / length));
+        audioTrack.release();
     }
 }
