@@ -2,13 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <item
         android:id="@+id/playFull"
         android:orderInCategory="100"
         android:title="Play"
         app:showAsAction="always"
+        android:icon="@drawable/play_circle_outline_white"
         />
 
+    <item
+        android:id="@+id/editFull"
+        android:title="Edit"
+        android:icon="@drawable/edit_music_white"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/saveFull"
+        android:title="Save"
+        android:icon="@drawable/save_music_white"
+        app:showAsAction="always">
+
+    </item>
 
 </menu>
