@@ -59,8 +59,8 @@
         android:layout_alignStart="@+id/select_length"
         android:layout_marginBottom="12dp"
         android:background="@android:drawable/btn_dropdown"
-        android:backgroundTint="#B22222"
-        android:popupBackground="#800000"
+        android:backgroundTint="#ff6961"
+        android:popupBackground="#ff6961"
         android:spinnerMode="dropdown" />
 
     <Spinner
