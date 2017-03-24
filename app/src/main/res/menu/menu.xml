@@ -22,7 +22,6 @@
         android:title="Save"
         android:icon="@drawable/save_music_white"
         app:showAsAction="always">
-
     </item>
 
 </menu>

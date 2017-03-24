@@ -104,9 +104,7 @@ public class FullScreenActivity extends AppCompatActivity {
         MenuItem resetButton = menu.findItem(R.id.playFull);
 
         return super.onCreateOptionsMenu(menu);
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -117,21 +115,20 @@ public class FullScreenActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(this, "Playing the music", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Playing the music", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.saveFull:
                 save();
-                Toast.makeText(this, "Saving the music", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Saving the music", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.editFull:
                 edit();
-                Toast.makeText(this, "Time to edit the music", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Time to edit the music", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     /**
      * This function will display the music from the music list.
