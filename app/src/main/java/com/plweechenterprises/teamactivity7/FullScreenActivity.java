@@ -98,7 +98,7 @@ public class FullScreenActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present
         inflater.inflate(R.menu.menu, menu);
 
-        MenuItem resetButton = menu.findItem(R.id.playFull);
+        MenuItem playFull = menu.findItem(R.id.playFull);
 
         return super.onCreateOptionsMenu(menu);
     }
