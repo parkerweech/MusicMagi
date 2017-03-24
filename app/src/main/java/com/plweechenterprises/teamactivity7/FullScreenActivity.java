@@ -56,7 +56,7 @@ public class FullScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
-        getSupportActionBar().setTitle("Music Magi");
+        getSupportActionBar().setTitle("Fullscreen");
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
@@ -99,6 +99,8 @@ public class FullScreenActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem playFull = menu.findItem(R.id.playFull);
+        MenuItem saveFull = menu.findItem(R.id.saveFull);
+        MenuItem editFull = menu.findItem(R.id.editFull);
 
         return super.onCreateOptionsMenu(menu);
     }

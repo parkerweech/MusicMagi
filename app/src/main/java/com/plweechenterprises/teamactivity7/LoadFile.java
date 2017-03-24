@@ -34,7 +34,7 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_file);
-        getSupportActionBar().setTitle("Music Magi");
+        getSupportActionBar().setTitle("Load Project");
 
         SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         Map<String, ?> allEntries = myPrefs.getAll();

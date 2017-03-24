@@ -10,6 +10,9 @@ import android.media.midi.MidiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,7 +62,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-        getSupportActionBar().setTitle("Music Magi");
+        getSupportActionBar().setTitle("Editor");
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
@@ -91,6 +94,45 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         if (noteList.size() > 0)
             display();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu2) {
+        MenuInflater inflater = getMenuInflater();
+
+        // Inflate the menu; this adds items to the action bar if it is present
+        inflater.inflate(R.menu.menu2, menu2);
+
+        MenuItem playFull = menu2.findItem(R.id.playEdit);
+        MenuItem saveFull = menu2.findItem(R.id.fullScreenEdit);
+        MenuItem editFull = menu2.findItem(R.id.saveEdit);
+
+        return super.onCreateOptionsMenu(menu2);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.playEdit:
+                try {
+                    playNotes();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //Toast.makeText(this, "Playing the current music", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.fullScreenEdit:
+                fullScreen();
+                //Toast.makeText(this, "Look at the music", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.saveEdit:
+                save();
+                //Toast.makeText(this, "Save the music", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
@@ -223,7 +265,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         display();
     }
 
-    public void save(View view) {
+    public void save() {
         //change view to Save activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -235,7 +277,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-    public void fullScreen(View view) {
+    public void fullScreen() {
         //change view to FullScreen activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -249,7 +291,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     //Playing the music!!!
 
-    public void playNotes(View view) throws InterruptedException {
+    public void playNotes() throws InterruptedException {
         int num = 0;
 
         Log.e("playNotes", "before if statement");

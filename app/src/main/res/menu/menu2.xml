@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/playEdit"
+        android:orderInCategory="100"
+        android:title="Play"
+        app:showAsAction="always"
+        android:icon="@drawable/play_circle_outline_white"
+        />
+
+    <item
+        android:id="@+id/fullScreenEdit"
+        android:title="Full Screen"
+        android:icon="@drawable/full_screen_white"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/saveEdit"
+        android:title="Save"
+        android:icon="@drawable/save_music_white"
+        app:showAsAction="always">
+    </item>
+
+</menu>

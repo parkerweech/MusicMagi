@@ -25,7 +25,7 @@ public class SaveFile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_file);
-        getSupportActionBar().setTitle("Music Magi");
+        getSupportActionBar().setTitle("Save Project");
 
         Intent intent = getIntent();
         noteList = intent.getStringExtra("notes");
