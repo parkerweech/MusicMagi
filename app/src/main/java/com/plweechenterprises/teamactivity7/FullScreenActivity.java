@@ -57,9 +57,6 @@ public class FullScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
         getSupportActionBar().setTitle("Music Magi");
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.ic_launcher);
 
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
