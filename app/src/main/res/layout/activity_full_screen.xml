@@ -10,6 +10,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.plweechenterprises.teamactivity7.FullScreenActivity">
 
+
+    <RelativeLayout
+        android:id="@+id/linearThing"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/scroll">
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="scroll"
+        android:text="Scroll Down"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/Save"
+        android:layout_marginStart="26dp" />
     <Button
         android:id="@+id/Edit"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -25,21 +42,11 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:onClick="save"
-        android:text="Save" />
-
-    <Button
-        android:id="@+id/Play"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Save"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="playNotes"
-        android:text="Play" />
-
+        android:layout_toEndOf="@+id/Edit"
+        android:layout_marginStart="20dp" />
 
 
 </RelativeLayout>

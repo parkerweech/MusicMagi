@@ -117,7 +117,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         newNote.setNoteName(note.getNoteName());
         newNote.setNoteLength(note.getNoteLength());
         noteList.add(newNote);
-        Toast.makeText(this,"Note added " + note.getNoteLength(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Note added " + note.getNoteLength(),Toast.LENGTH_SHORT).show();
         display();
     }
 
@@ -137,7 +137,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             someNotes += " ";
         }
 
-        Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();
     }
 
     public void delete(View view) {

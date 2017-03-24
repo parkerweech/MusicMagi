@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,9 @@ public class FullScreenActivity extends AppCompatActivity {
 
     private List<Note> noteList = new ArrayList<>();
     private Note note = new Note();
+
+    int maxNotes = 0;
+    int count = 0;
 
     private final int sampleRate = 8000;
     private final int numSamples = sampleRate;
@@ -57,20 +61,6 @@ public class FullScreenActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_launcher);
 
-        /*
-        Button button = (Button)findViewById(R.id.Edit);
-        button.setBackgroundColor(Color.DKGRAY);
-        button.setTextColor(Color.WHITE);
-
-        button = (Button)findViewById(R.id.Save);
-        button.setBackgroundColor(Color.DKGRAY);
-        button.setTextColor(Color.WHITE);
-
-        button = (Button)findViewById(R.id.Play);
-        button.setBackgroundColor(Color.DKGRAY);
-        button.setTextColor(Color.WHITE);
-        */
-
         Intent intent = getIntent();
         String json = intent.getStringExtra("notes");
 
@@ -86,14 +76,57 @@ public class FullScreenActivity extends AppCompatActivity {
                 noteList.add(noteListContainer.getNoteList().get(i));
             }
         }
+
+        if (noteList.size() > 48)
+            maxNotes = 48;
+        else
+            maxNotes = noteList.size();
+
         displayFull();
+
+        if (noteList.size() <= maxNotes) {
+            Button button = (Button) findViewById(R.id.scroll);
+            RelativeLayout fullLayout = (RelativeLayout) findViewById(R.id.activity_full_screen);
+            fullLayout.removeView(button);
+        }
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        // Inflate the menu; this adds items to the action bar if it is present
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem resetButton = menu.findItem(R.id.playFull);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.playFull:
+                try {
+                    playNotes();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(this, "Playing the music", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     /**
      * This function will display the music from the music list.
      */
-    // currently the display is a scrollable view and may need to be changed
-    public void displayFull() {
+    public void displayFull(){
 
         //initial location for first note
         int noteX = 0;
@@ -101,24 +134,24 @@ public class FullScreenActivity extends AppCompatActivity {
         int textX = 30;
         int textY = 150;
 
-        RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_full_screen);
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.linearThing);
 
-        for(int i = 0; i < noteList.size(); i++) {
+        for(; count < maxNotes; count++) {
             ImageView image = new ImageView(this);
-            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100, 100));
             image.setX(noteX);
             image.setY(noteY);
             noteX += 125;
 
             TextView text = new TextView(this);
-            text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100,100));
+            text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100, 100));
             text.setX(textX);
             text.setY(textY);
-            text.setText(noteList.get(i).getNoteName());
+            text.setText(noteList.get(count).getNoteName());
             textX += 125;
 
             //determine type of note to display
-            switch (noteList.get(i).getNoteLength()){
+            switch (noteList.get(count).getNoteLength()) {
                 case 0:
                     image.setImageResource(R.drawable.sixteenth_image);
                     break;
@@ -143,7 +176,7 @@ public class FullScreenActivity extends AppCompatActivity {
             }
 
             //start a new line
-            if ((i+1) % 8 == 0){
+            if ((count + 1) % 8 == 0) {
                 noteY += 200;
                 noteX = 0;
                 textY += 200;
@@ -156,30 +189,25 @@ public class FullScreenActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
 
-        // Inflate the menu; this adds items to the action bar if it is present
-        inflater.inflate(R.menu.menu, menu);
+    public void scroll(View view){
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.linearThing);
+            layout.removeAllViewsInLayout();
 
-        MenuItem resetButton = menu.findItem(R.id.playFull);
+            if (noteList.size() > 48 + maxNotes)
+                maxNotes += 48;
+            else
+                maxNotes = noteList.size();
 
-        return super.onCreateOptionsMenu(menu);
+            displayFull();
 
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.playFull:
-                Toast.makeText(this, "Playing the music", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (noteList.size() <= maxNotes) {
+            Button button = (Button) findViewById(R.id.scroll);
+            RelativeLayout fullLayout = (RelativeLayout) findViewById(R.id.activity_full_screen);
+            fullLayout.removeView(button);
         }
     }
+
 
     /**
      * This function will save the current list of music to the user's desired location.
@@ -217,7 +245,7 @@ public class FullScreenActivity extends AppCompatActivity {
      * This function will play the full list of music from the full screen
      */
     // start playing all of the music in the current file
-    public void playNotes(View view) throws InterruptedException {
+    public void playNotes() throws InterruptedException {
         int num = 0;
 
         Log.e("playNotes", "before if statement");
