@@ -86,9 +86,11 @@ public class FullScreenActivity extends AppCompatActivity {
 
         if (noteList.size() <= maxNotes) {
             Button button = (Button) findViewById(R.id.scroll);
-            RelativeLayout fullLayout = (RelativeLayout) findViewById(R.id.activity_full_screen);
-            fullLayout.removeView(button);
+            button.setVisibility(View.GONE);
         }
+
+        Button button2 = (Button) findViewById(R.id.firstPage);
+        button2.setVisibility(View.GONE);
     }
 
 
@@ -211,9 +213,27 @@ public class FullScreenActivity extends AppCompatActivity {
 
         if (noteList.size() <= maxNotes) {
             Button button = (Button) findViewById(R.id.scroll);
-            RelativeLayout fullLayout = (RelativeLayout) findViewById(R.id.activity_full_screen);
-            fullLayout.removeView(button);
+            button.setVisibility(View.GONE);
         }
+
+        Button button2 = (Button) findViewById(R.id.firstPage);
+        button2.setVisibility(View.VISIBLE);
+    }
+
+    public void scrollBack(View view){
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.linearThing);
+        layout.removeAllViewsInLayout();
+
+        maxNotes = 48;
+        count = 0;
+
+        displayFull();
+
+        Button button = (Button) findViewById(R.id.scroll);
+        button.setVisibility(View.VISIBLE);
+
+        Button button2 = (Button) findViewById(R.id.firstPage);
+        button2.setVisibility(View.GONE);
     }
 
 
