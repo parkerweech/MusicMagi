@@ -108,5 +108,12 @@
         android:onClick="delete"
         android:text="Delete Last Note" />
 
+    <RelativeLayout
+        android:id="@+id/noteLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="visible"></RelativeLayout>
+
 
 </RelativeLayout>

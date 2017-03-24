@@ -13,7 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -31,7 +35,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             "D4♭"/*6*/, "D4"/*7*/, "D4♯"/*8*/, "E4♭"/*9*/,
             "E4"/*10*/, "F4"/*11*/, "F4♯"/*12*/, "G4♭"/*13*/,
             "G4"/*14*/, "G4♯"/*15*/, "A4♭"/*16*/, "A4"/*17*/,
-            "A4♯"/*18*/, "B4♭"/*19*/, "B5"/*20*/, "C5"/*21*/,
+            "A4♯"/*18*/, "B4♭"/*19*/, "B4"/*20*/, "C5"/*21*/,
             "C5♯"/*22*/, "D5♭"/*23*/, "D5"/*24*/, "D5♯"/*25*/,
             "E5♭"/*26*/, "E5"/*27*/, "F5"/*28*/, "F5♯"/*29*/,
             "G5♭"/*30*/, "G5"/*31*/, "G5♯"/*32*/, "A5♭"/*33*/,
@@ -47,6 +51,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     private double freqOfTone = note.getNoteFrequency(); // hz
     private final byte generatedSnd[] = new byte[4 * numSamples];
     private double length = note.getNoteDuration();
+    private int displayIterator;
+    private int num = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +85,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         lengthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown2.setAdapter(lengthAdapter);
         dropdown2.setOnItemSelectedListener(this);
+
+        displayIterator = 0;
 
     }
 
@@ -123,7 +132,69 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     public void display() {
         //update display with x number of notes
-        int num;
+
+        num = 0;
+
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.noteLayout);
+
+        int noteX = 0;
+        int noteY = 50;
+        int textX = 30;
+        int textY = 150;
+
+        if(noteList.size() > 8) {
+            num = noteList.size() - 8;
+            layout.removeAllViewsInLayout();
+        }
+
+        while (num < noteList.size()) {
+
+                ImageView image = new ImageView(this);
+                image.setLayoutParams(new android.view.ViewGroup.LayoutParams(100, 100));
+                image.setX(noteX);
+                image.setY(noteY);
+                noteX += 125;
+
+                TextView text = new TextView(this);
+                text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100, 100));
+                text.setX(textX);
+                text.setY(textY);
+                text.setText(noteList.get(num).getNoteName());
+                textX += 125;
+
+                //determine type of note to display
+                switch (noteList.get(num).getNoteLength()) {
+                    case 0:
+                        image.setImageResource(R.drawable.sixteenth_image);
+                        break;
+                    case 1:
+                        image.setImageResource(R.drawable.eighth_note);
+                        break;
+                    case 2:
+                        image.setImageResource(R.drawable.dotted_eighth_note);
+                        break;
+                    case 3:
+                        image.setImageResource(R.drawable.quarter_note);
+                        break;
+                    case 4:
+                        image.setImageResource(R.drawable.dotted_quarter_note);
+                        break;
+                    case 5:
+                        image.setImageResource(R.drawable.half_note);
+                        break;
+                    default:
+                        image.setImageResource(R.drawable.whole_note);
+                        break;
+                }
+
+                // Adds the view to the layout
+                layout.addView(image);
+                layout.addView(text);
+                num++;
+            }
+        }
+
+        /*int num;
         String someNotes = new String();
 
        if(noteList.size() > 8)
@@ -137,8 +208,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             someNotes += " ";
         }
 
-        Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();
-    }
+        Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();*/
 
     public void delete(View view) {
         //delete the last note on noteList
@@ -146,6 +216,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             noteList.remove(noteList.size() - 1);
             Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
         }
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.noteLayout);
+        layout.removeAllViewsInLayout();
         display();
     }
 
@@ -194,7 +266,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             Log.e("playNotes", "just played the sounds");
 
             Log.e("playNotes", "just slept");
-
 
             num++;
         }
