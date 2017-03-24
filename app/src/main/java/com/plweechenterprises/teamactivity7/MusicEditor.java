@@ -88,6 +88,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
         displayIterator = 0;
 
+        if (noteList.size() > 0)
+            display();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
