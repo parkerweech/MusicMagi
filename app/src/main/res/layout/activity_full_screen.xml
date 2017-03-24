@@ -20,33 +20,13 @@
 
     <Button
         android:id="@+id/scroll"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:onClick="scroll"
-        android:text="Scroll Down"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/Save"
-        android:layout_marginStart="26dp" />
-    <Button
-        android:id="@+id/Edit"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="edit"
-        android:text="Edit" />
-
-    <Button
-        android:id="@+id/Save"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="save"
-        android:text="Save"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/Edit"
-        android:layout_marginStart="20dp" />
+        android:text="Next Page" />
 
 
 </RelativeLayout>

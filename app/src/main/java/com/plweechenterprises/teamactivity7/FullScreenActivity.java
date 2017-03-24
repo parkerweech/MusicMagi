@@ -117,6 +117,14 @@ public class FullScreenActivity extends AppCompatActivity {
                 }
                 Toast.makeText(this, "Playing the music", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.saveFull:
+                save();
+                Toast.makeText(this, "Saving the music", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.editFull:
+                edit();
+                Toast.makeText(this, "Time to edit the music", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -211,10 +219,9 @@ public class FullScreenActivity extends AppCompatActivity {
 
     /**
      * This function will save the current list of music to the user's desired location.
-     * @param view
      */
     // change view to Save File screen
-    public void save(View view) {
+    public void save() {
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
         String json = gson.toJson(noteListContainer);
@@ -227,10 +234,9 @@ public class FullScreenActivity extends AppCompatActivity {
 
     /**
      * This function will send you to the edit screen to make changes to the music list.
-     * @param view
      */
     // Change view to MusicEditor screen
-    public void edit(View view) {
+    public void edit() {
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
         String json = gson.toJson(noteListContainer);
