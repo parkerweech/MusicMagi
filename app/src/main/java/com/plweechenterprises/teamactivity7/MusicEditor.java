@@ -192,6 +192,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             layout.removeAllViewsInLayout();
         }
 
+        layout.removeAllViewsInLayout();
         while (num < noteList.size()) {
 
                 ImageView image = new ImageView(this);
