@@ -75,6 +75,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             for(int i = 0; i < noteListContainer.getNoteList().size(); i++) {
                 noteList.add(noteListContainer.getNoteList().get(i));
             }
+            display();
         }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
