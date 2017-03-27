@@ -68,7 +68,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         String json = intent.getStringExtra("notes");
         if(json.length() > 0) {
 
-            Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Hello World",Toast.LENGTH_SHORT).show();
             Gson gson = new Gson();
 
             NoteListContainer noteListContainer = gson.fromJson(json, NoteListContainer.class);
@@ -171,7 +171,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         newNote.setNoteName(note.getNoteName());
         newNote.setNoteLength(note.getNoteLength());
         noteList.add(newNote);
-        Toast.makeText(this,"Note added " + note.getNoteLength(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Note added " + note.getNoteLength(),Toast.LENGTH_SHORT).show();
         display();
     }
 
@@ -239,27 +239,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             }
         }
 
-        /*int num;
-        String someNotes = new String();
-
-       if(noteList.size() > 8)
-            num = noteList.size() - 8;
-        else
-            num = 0;
-
-        while(num < noteList.size())
-        {
-            someNotes += noteList.get(num++).getNoteName();
-            someNotes += " ";
-        }
-
-        Toast.makeText(this,"noteList: " + someNotes,Toast.LENGTH_SHORT).show();*/
-
     public void delete(View view) {
         //delete the last note on noteList
         if(noteList.size() != 0) {
             noteList.remove(noteList.size() - 1);
-            Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
         }
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.noteLayout);
         layout.removeAllViewsInLayout();
