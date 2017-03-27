@@ -71,6 +71,8 @@ public class Note {
             noteFrequency = 830.609;
         else if (noteValue == 34)
             noteFrequency = 880;
+        else if (noteValue == 35)
+            noteFrequency = 0;
     }
 
     public int getNoteLength() {
