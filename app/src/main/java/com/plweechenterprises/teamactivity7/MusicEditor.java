@@ -1,12 +1,9 @@
 package com.plweechenterprises.teamactivity7;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
-import android.media.midi.MidiInputPort;
-import android.media.midi.MidiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,7 +38,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             "C5♯"/*22*/, "D5♭"/*23*/, "D5"/*24*/, "D5♯"/*25*/,
             "E5♭"/*26*/, "E5"/*27*/, "F5"/*28*/, "F5♯"/*29*/,
             "G5♭"/*30*/, "G5"/*31*/, "G5♯"/*32*/, "A5♭"/*33*/,
-            "A5"/*34*/};
+            "A5"/*34*/, "Rest"/*35*/};
     private String[] noteLengths = {"Sixteenth Note" /*0*/,
             "Eighth Note" /*1*/,
             "Dotted Eighth" /*2*/, "Quarter Note" /*3*/,
@@ -139,7 +135,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                                int pos, long id) {
         String tempValue = parent.getItemAtPosition(pos).toString();
 
-        if (tempValue.length() < 4) {
+        if (tempValue.length() < 5) {
             selectNote(pos, tempValue);
             //Toast.makeText(this,"Value: " + tempValue,Toast.LENGTH_SHORT).show();
         }
@@ -205,8 +201,10 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                 text.setLayoutParams(new android.view.ViewGroup.LayoutParams(100, 100));
                 text.setX(textX);
                 text.setY(textY);
+
+            if (noteList.get(num).getNoteValue() != 35) {
+
                 text.setText(noteList.get(num).getNoteName());
-                textX += 125;
 
                 //determine type of note to display
                 switch (noteList.get(num).getNoteLength()) {
@@ -232,13 +230,44 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                         image.setImageResource(R.drawable.whole_note);
                         break;
                 }
-
-                // Adds the view to the layout
-                layout.addView(image);
-                layout.addView(text);
-                num++;
             }
+            /*else {
+                text.setText(" ");
+
+                //determine type of note to display
+                switch (noteList.get(num).getNoteLength()) {
+                    case 0:
+                        image.setImageResource(R.drawable.sixteenth_rest);
+                        break;
+                    case 1:
+                        image.setImageResource(R.drawable.eighth_rest);
+                        break;
+                    case 2:
+                        image.setImageResource(R.drawable.dotted_eighth_rest);
+                        break;
+                    case 3:
+                        image.setImageResource(R.drawable.quarter_rest);
+                        break;
+                    case 4:
+                        image.setImageResource(R.drawable.dotted_quarter_rest);
+                        break;
+                    case 5:
+                        image.setImageResource(R.drawable.half_rest);
+                        break;
+                    default:
+                        image.setImageResource(R.drawable.whole_note);
+                        break;
+                }
+            }*/
+
+            textX += 125;
+
+            // Adds the view to the layout
+            layout.addView(image);
+            layout.addView(text);
+            num++;
         }
+    }
 
     public void delete(View view) {
         //delete the last note on noteList
@@ -285,15 +314,22 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         while(num < noteList.size()) {
 
             Log.e("playNotes", "first line of while loop");
+
             freqOfTone = noteList.get(num).getNoteFrequency();
             Log.e("playNotes", "just set frequency");
             length = noteList.get(num).getNoteDuration();
             Log.e("playNotes", "just set duration");
 
-            genTone();
-            Log.e("playNotes", "just generated the tone");
-            playSound();
-            Log.e("playNotes", "just played the sounds");
+            // only play non-rests
+            if(noteList.get(num).getNoteValue() != 35) {
+                genTone();
+                Log.e("playNotes", "just generated the tone");
+                playSound();
+                Log.e("playNotes", "just played the sounds");
+            }
+            else {
+                Thread.sleep((int) (2000 / length));
+            }
 
             Log.e("playNotes", "just slept");
 
