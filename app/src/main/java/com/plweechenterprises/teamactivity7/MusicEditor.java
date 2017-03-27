@@ -92,6 +92,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             display();
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu2) {
         MenuInflater inflater = getMenuInflater();
@@ -129,7 +130,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    */
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
@@ -280,7 +281,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         display();
     }
 
-    public void save() {
+    public void save(View view) {
         //change view to Save activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -292,7 +293,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-    public void fullScreen() {
+    public void fullScreen(View view) {
         //change view to FullScreen activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -306,7 +307,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
     //Playing the music!!!
 
-    public void playNotes() throws InterruptedException {
+    public void playNotes(View view) throws InterruptedException {
         int num = 0;
 
         Log.e("playNotes", "before if statement");
