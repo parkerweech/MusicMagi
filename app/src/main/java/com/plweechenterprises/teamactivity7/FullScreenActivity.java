@@ -101,6 +101,7 @@ public class FullScreenActivity extends AppCompatActivity {
         MenuItem playFull = menu.findItem(R.id.playFull);
         MenuItem saveFull = menu.findItem(R.id.saveFull);
         MenuItem editFull = menu.findItem(R.id.editFull);
+        MenuItem homeScreen = menu.findItem(R.id.homeScreen);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -123,6 +124,9 @@ public class FullScreenActivity extends AppCompatActivity {
             case R.id.editFull:
                 edit();
                 //Toast.makeText(this, "Time to edit the music", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.homeScreen:
+                homeScreen();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -290,6 +294,14 @@ public class FullScreenActivity extends AppCompatActivity {
 
             num++;
         }
+    }
+
+    public void homeScreen() {
+        //change view to homeScreen activity
+        Log.d("homeScreen", "homeScreen was called");
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     void genTone(){

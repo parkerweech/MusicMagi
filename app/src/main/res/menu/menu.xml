@@ -24,4 +24,11 @@
         app:showAsAction="always">
     </item>
 
+    <item
+        android:id="@+id/homeScreen"
+        android:title="Home"
+        android:icon="@drawable/home_screen"
+        app:showAsAction="always">
+    </item>
+
 </menu>
