@@ -3,19 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/playEdit"
-        android:orderInCategory="100"
-        android:title="Play"
-        app:showAsAction="always"
-        android:icon="@drawable/play_circle_outline_white"
-        />
-
-    <item
         android:id="@+id/fullScreenEdit"
+        android:orderInCategory="100"
         android:title="Full Screen"
+        app:showAsAction="always"
         android:icon="@drawable/full_screen_white"
-        app:showAsAction="always">
-    </item>
+        />
 
     <item
         android:id="@+id/saveEdit"

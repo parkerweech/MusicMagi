@@ -75,7 +75,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
-        ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, noteValues);
+        ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, noteValues);
         noteAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(noteAdapter);
         dropdown.setOnItemSelectedListener(this);
@@ -92,7 +92,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             display();
     }
 
-    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu2) {
         MenuInflater inflater = getMenuInflater();
@@ -100,7 +99,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         // Inflate the menu; this adds items to the action bar if it is present
         inflater.inflate(R.menu.menu2, menu2);
 
-        MenuItem playFull = menu2.findItem(R.id.playEdit);
         MenuItem saveFull = menu2.findItem(R.id.fullScreenEdit);
         MenuItem editFull = menu2.findItem(R.id.saveEdit);
 
@@ -123,8 +121,6 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                 return super.onOptionsItemSelected(item);
         }
     }
-    */
-
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
@@ -275,7 +271,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         display();
     }
 
-    public void save(View view) {
+    public void save() {
         //change view to Save activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
@@ -287,7 +283,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
-    public void fullScreen(View view) {
+    public void fullScreen() {
         //change view to FullScreen activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
         Gson gson = new Gson();
