@@ -75,7 +75,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
 
         Spinner dropdown = (Spinner) findViewById(R.id.select_note);
-        ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, noteValues);
+        ArrayAdapter<String> noteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, noteValues);
         noteAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(noteAdapter);
         dropdown.setOnItemSelectedListener(this);
@@ -107,17 +107,10 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         return super.onCreateOptionsMenu(menu2);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
-            case R.id.playEdit:
-                try {
-                    playNotes();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                //Toast.makeText(this, "Playing the current music", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.fullScreenEdit:
                 fullScreen();
                 //Toast.makeText(this, "Look at the music", Toast.LENGTH_SHORT).show();
@@ -131,6 +124,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
     */
+
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
