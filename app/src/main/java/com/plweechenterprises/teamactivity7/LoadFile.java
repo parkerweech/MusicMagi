@@ -6,6 +6,9 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -54,6 +57,37 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
         dropdown.setOnItemSelectedListener(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu_load) {
+        MenuInflater inflater = getMenuInflater();
+
+        // Inflate the menu; this adds items to the action bar if it is present
+        inflater.inflate(R.menu.menu_load, menu_load);
+
+        MenuItem homeScreen = menu_load.findItem(R.id.homeScreen);
+
+        return super.onCreateOptionsMenu(menu_load);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.homeScreen:
+                homeScreen();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void homeScreen() {
+        //change view to homeScreen activity
+        Log.d("homeScreen", "homeScreen was called");
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     /**
      *
      * @param parent
@@ -71,12 +105,9 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
      */
     public void onNothingSelected(AdapterView<?> parent) {
 
+        // Android Studio needed this for the spinner
+        return;
     }
-
-    /*String getFileName() {
-
-        return "fileName goes here";
-    }*/
 
     /**
      *
