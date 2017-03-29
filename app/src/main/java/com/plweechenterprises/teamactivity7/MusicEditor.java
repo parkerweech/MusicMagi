@@ -166,6 +166,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         //update display with x number of notes
 
         num = 0;
+        int count = 1;
 
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.noteLayout);
 
@@ -174,8 +175,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         int textX = 30;
         int textY = 150;
 
-        if(noteList.size() > 8) {
-            num = noteList.size() - 8;
+        if(noteList.size() > 16) {
+            num = noteList.size() - 16;
             layout.removeAllViewsInLayout();
         }
 
@@ -253,10 +254,19 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
             textX += 125;
 
+            //start a new line
+            if (count % 8 == 0) {
+                noteY += 200;
+                noteX = 0;
+                textY += 200;
+                textX = 30;
+            }
+
             // Adds the view to the layout
             layout.addView(image);
             layout.addView(text);
             num++;
+            count++;
         }
     }
 
