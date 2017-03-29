@@ -33,24 +33,25 @@
 
     <Spinner
         android:id="@+id/select_note"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/select_length"
-        android:layout_alignStart="@+id/select_length"
-        android:layout_marginBottom="12dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/maroontheme_spinner_default_holo_light"
+        android:spinnerMode="dropdown"
+        android:layout_alignStart="@+id/select_length" />
 
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
         android:id="@+id/select_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/addNote"
-        android:layout_marginBottom="25dp"
         android:layout_alignStart="@+id/addNote"
-        />
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/maroontheme_spinner_default_holo_light"
+        android:spinnerMode="dropdown"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Select length:"
@@ -59,10 +60,9 @@
         android:id="@+id/select_length_label"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp"
-        android:layout_below="@+id/select_note"
+        android:layout_alignBottom="@+id/select_length"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp"
-        android:layout_toStartOf="@+id/select_note" />
+        android:layout_toStartOf="@+id/select_length" />
 
     <TextView
         android:text="Select note:"
@@ -71,9 +71,8 @@
         android:id="@+id/select_note_label"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp"
-        android:layout_alignTop="@+id/select_note"
+        android:layout_alignBottom="@+id/select_note"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp"
         android:layout_toStartOf="@+id/select_note" />
 
     <Button

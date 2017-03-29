@@ -101,6 +101,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
         MenuItem saveFull = menu2.findItem(R.id.fullScreenEdit);
         MenuItem editFull = menu2.findItem(R.id.saveEdit);
+        MenuItem homeScreen = menu2.findItem(R.id.homeScreen);
 
         return super.onCreateOptionsMenu(menu2);
     }
@@ -117,6 +118,8 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                 save();
                 //Toast.makeText(this, "Save the music", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.homeScreen:
+                homeScreen();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -302,6 +305,14 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
 
         Intent intent = new Intent(this, FullScreenActivity.class);
         intent.putExtra("notes", json);
+        startActivity(intent);
+    }
+
+    public void homeScreen() {
+        //change view to homeScreen activity
+        Log.d("homeScreen", "homeScreen was called");
+
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

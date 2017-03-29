@@ -11,14 +11,14 @@
     tools:context="com.plweechenterprises.teamactivity7.LoadFile">
 
     <Spinner
+        android:id="@+id/select_filename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="121dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:id="@+id/select_filename"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="121dp"
+        android:background="@drawable/maroontheme_spinner_default_holo_light"
+        android:spinnerMode="dropdown" />
 
     <Button
         android:id="@+id/button2"
