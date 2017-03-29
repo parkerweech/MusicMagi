@@ -161,29 +161,64 @@ public class FullScreenActivity extends AppCompatActivity {
             textX += 125;
 
             //determine type of note to display
-            switch (noteList.get(count).getNoteLength()) {
-                case 0:
-                    image.setImageResource(R.drawable.sixteenth_image);
-                    break;
-                case 1:
-                    image.setImageResource(R.drawable.eighth_note);
-                    break;
-                case 2:
-                    image.setImageResource(R.drawable.dotted_eighth_note);
-                    break;
-                case 3:
-                    image.setImageResource(R.drawable.quarter_note);
-                    break;
-                case 4:
-                    image.setImageResource(R.drawable.dotted_quarter_note);
-                    break;
-                case 5:
-                    image.setImageResource(R.drawable.half_note);
-                    break;
-                default:
-                    image.setImageResource(R.drawable.whole_note);
-                    break;
+            if (noteList.get(count).getNoteValue() != 35) {
+
+                text.setText(noteList.get(count).getNoteName());
+
+                //determine type of note to display
+                switch (noteList.get(count).getNoteLength()) {
+                    case 0:
+                        image.setImageResource(R.drawable.sixteenth_image);
+                        break;
+                    case 1:
+                        image.setImageResource(R.drawable.eighth_note);
+                        break;
+                    case 2:
+                        image.setImageResource(R.drawable.dotted_eighth_note);
+                        break;
+                    case 3:
+                        image.setImageResource(R.drawable.quarter_note);
+                        break;
+                    case 4:
+                        image.setImageResource(R.drawable.dotted_quarter_note);
+                        break;
+                    case 5:
+                        image.setImageResource(R.drawable.half_note);
+                        break;
+                    default:
+                        image.setImageResource(R.drawable.whole_note);
+                        break;
+                }
             }
+            else {
+                text.setText(" ");
+
+                //determine type of note to display
+                switch (noteList.get(count).getNoteLength()) {
+                    case 0:
+                        image.setImageResource(R.drawable.sixteenth_rest);
+                        break;
+                    case 1:
+                        image.setImageResource(R.drawable.eighth_rest);
+                        break;
+                    case 2:
+                        image.setImageResource(R.drawable.new_dotted_eighth_rest);
+                        break;
+                    case 3:
+                        image.setImageResource(R.drawable.quarter_rest);
+                        break;
+                    case 4:
+                        image.setImageResource(R.drawable.dotted_quarter_rest);
+                        break;
+                    case 5:
+                        image.setImageResource(R.drawable.half_rest);
+                        break;
+                    default:
+                        image.setImageResource(R.drawable.whole_note);
+                        break;
+                }
+            }
+
 
             //start a new line
             if ((count + 1) % 8 == 0) {

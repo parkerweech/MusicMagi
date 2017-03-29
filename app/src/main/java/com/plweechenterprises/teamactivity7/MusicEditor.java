@@ -226,7 +226,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                         break;
                 }
             }
-            /*else {
+            else {
                 text.setText(" ");
 
                 //determine type of note to display
@@ -238,7 +238,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                         image.setImageResource(R.drawable.eighth_rest);
                         break;
                     case 2:
-                        image.setImageResource(R.drawable.dotted_eighth_rest);
+                        image.setImageResource(R.drawable.new_dotted_eighth_rest);
                         break;
                     case 3:
                         image.setImageResource(R.drawable.quarter_rest);
@@ -253,7 +253,7 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
                         image.setImageResource(R.drawable.whole_note);
                         break;
                 }
-            }*/
+            }
 
             textX += 125;
 
