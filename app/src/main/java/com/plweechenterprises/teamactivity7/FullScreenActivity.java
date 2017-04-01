@@ -90,7 +90,11 @@ public class FullScreenActivity extends AppCompatActivity {
         button2.setVisibility(View.GONE);
     }
 
-
+    /**
+     * This function populates the buttons in the action bar.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -106,6 +110,11 @@ public class FullScreenActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * This function controls what happens when you press the buttons in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
@@ -234,7 +243,11 @@ public class FullScreenActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * This function allows us to have more than one page of music.
+     * There is a button that the user can use to go to the next page.
+     * @param view
+     */
     public void scroll(View view){
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.linearThing);
             layout.removeAllViewsInLayout();
@@ -255,6 +268,10 @@ public class FullScreenActivity extends AppCompatActivity {
         button2.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * This function will return the user to the first page of the music.
+     * @param view
+     */
     public void scrollBack(View view){
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.linearThing);
         layout.removeAllViewsInLayout();
@@ -303,7 +320,7 @@ public class FullScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * This function will play the full list of music from the full screen
+     * This function will play the full list of music from the full screen.
      */
     // start playing all of the music in the current file
     public void playNotes() throws InterruptedException {
@@ -331,6 +348,9 @@ public class FullScreenActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This function will send the user to the main/home screen.
+     */
     public void homeScreen() {
         //change view to homeScreen activity
         Log.d("homeScreen", "homeScreen was called");
@@ -339,6 +359,9 @@ public class FullScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * This function will generate the sound to play the music.
+     */
     void genTone(){
         // fill out the array
         for (int i = 0; i < numSamples; ++i) {
@@ -358,6 +381,10 @@ public class FullScreenActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This function will play the music.
+     * @throws InterruptedException
+     */
     void playSound() throws InterruptedException {
         final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
                 sampleRate, AudioFormat.CHANNEL_OUT_MONO,
