@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- *
+ * This class allows the user to save the music they have just created.
  */
 public class SaveFile extends AppCompatActivity {
 
@@ -21,7 +21,8 @@ public class SaveFile extends AppCompatActivity {
     String noteList;
 
     /**
-     *
+     * This will function will initialize the activity when the activity is started for the
+     *  first time.
      * @param savedInstanceState
      */
     @Override
@@ -34,6 +35,11 @@ public class SaveFile extends AppCompatActivity {
         noteList = intent.getStringExtra("notes");
     }
 
+    /**
+     * This function populates the buttons in the action bar.
+     * @param menu_save
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu_save) {
         MenuInflater inflater = getMenuInflater();
@@ -46,7 +52,11 @@ public class SaveFile extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu_save);
     }
 
-
+    /**
+     * This function controls what happens when you press the buttons in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
@@ -58,6 +68,9 @@ public class SaveFile extends AppCompatActivity {
         }
     }
 
+    /**
+     * This function will send the user to the main/home screen.
+     */
     public void homeScreen() {
         //change view to homeScreen activity
         Log.d("homeScreen", "homeScreen was called");
@@ -67,7 +80,7 @@ public class SaveFile extends AppCompatActivity {
     }
 
     /**
-     *
+     * This will get the name of the file that the user inputs.
      */
     void inputFileName() {
         EditText editText = (EditText) findViewById(R.id.editFileName);
@@ -75,7 +88,7 @@ public class SaveFile extends AppCompatActivity {
     }
 
     /**
-     *
+     * This will save the music to the file that the user selected.
      */
     void saveFile() {
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -86,7 +99,7 @@ public class SaveFile extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function starts the activity and calls the saveFile() function.
      * @param view
      */
     public void save(View view) {

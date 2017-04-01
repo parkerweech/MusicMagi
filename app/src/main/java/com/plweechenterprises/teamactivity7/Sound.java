@@ -11,7 +11,7 @@ import android.os.Handler;
  */
 
 /**
- *
+ * This is the class responsible for producing the sound for the music that the user created.
  */
 public class Sound extends MusicEditor {
     // originally from http://marblemice.blogspot.com/2010/04/generate-and-play-tone-in-android.html
@@ -28,7 +28,8 @@ public class Sound extends MusicEditor {
     Handler handler = new Handler();
 
     /**
-     *
+     * This will function will initialize the activity when the activity is started for the
+     *  first time.
      * @param savedInstanceState
      */
     @Override
@@ -38,7 +39,7 @@ public class Sound extends MusicEditor {
     }
 
     /**
-     *
+     * This function creates a thread to play the music.
      */
     @Override
     protected void onResume() {
@@ -60,7 +61,7 @@ public class Sound extends MusicEditor {
     }
 
     /**
-     *
+     * This function generates the sound.
      */
     void genTone(){
         // fill out the array
@@ -82,7 +83,7 @@ public class Sound extends MusicEditor {
     }
 
     /**
-     *
+     * This function will play the sounds.
      */
     void playSound(){
         final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
