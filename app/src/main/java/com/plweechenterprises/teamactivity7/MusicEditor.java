@@ -18,13 +18,15 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The music editor class allows the user to create their own music. The user will be able to
+ *  add, delete, select the note and the length from a spinner list.
+ */
 public class MusicEditor extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private List<Note> noteList = new ArrayList<>();
@@ -53,7 +55,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
     private int displayIterator;
     private int num = 0;
 
-
+    /**
+     * This will function will initialize the activity when the activity is started for the
+     *  first time.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +98,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
             display();
     }
 
+    /**
+     * This function populates the buttons in the action bar.
+     * @param menu2
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu2) {
         MenuInflater inflater = getMenuInflater();
@@ -106,7 +117,11 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         return super.onCreateOptionsMenu(menu2);
     }
 
-
+    /**
+     * This function controls what happens when you press the buttons in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
@@ -125,6 +140,13 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
+    /**
+     * This function is called if the user selects an item from the spinner list.
+     * @param parent
+     * @param view
+     * @param pos
+     * @param id
+     */
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         String tempValue = parent.getItemAtPosition(pos).toString();
@@ -139,21 +161,38 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
+    /**
+     * This function is called if nothing is selected from the spinner.
+     * @param parent
+     */
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
 
+    /**
+     * This function allows the user to select a note from a list.
+     * @param value
+     * @param name
+     */
     public void selectNote(int value, String name) {
         //dropdown list with notes and rests
         note.setNoteValue(value);
         note.setNoteName(name);
     }
 
+    /**
+     * This function allows the user to select a length for the note from a list.
+     * @param length
+     */
     public void selectLength(int length) {
         //dropdown list with length of note
         note.setNoteLength(length);
     }
 
+    /**
+     * This function will add one note to the list.
+     * @param view
+     */
     public void addNote(View view) {
         //adds note to noteList
         Note newNote = new Note();
@@ -165,6 +204,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         display();
     }
 
+    /**
+     * This function will display 2 lines of the music above the buttons on the editor screen.
+     */
     public void display() {
         //update display with x number of notes
 
@@ -273,6 +315,10 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
+    /**
+     * Thi s function will delete the note at the end of the list one note at a time.
+     * @param view
+     */
     public void delete(View view) {
         //delete the last note on noteList
         if(noteList.size() != 0) {
@@ -284,6 +330,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         display();
     }
 
+    /**
+     * This function will send the user to the save file activity.
+     */
     public void save() {
         //change view to Save activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
@@ -296,6 +345,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
+    /**
+     * This function will send the user to the full screen activity.
+     */
     public void fullScreen() {
         //change view to FullScreen activity
         NoteListContainer noteListContainer = new NoteListContainer(noteList);
@@ -308,6 +360,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
+    /**
+     * This function will send the user to the main/home screen.
+     */
     public void homeScreen() {
         //change view to homeScreen activity
         Log.d("homeScreen", "homeScreen was called");
@@ -316,8 +371,12 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         startActivity(intent);
     }
 
+    /**
+     * This function will play the full list of music from the editor screen.
+     * @param view
+     * @throws InterruptedException
+     */
     //Playing the music!!!
-
     public void playNotes(View view) throws InterruptedException {
         int num = 0;
 
@@ -349,6 +408,9 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
+    /**
+     * This function will generate the sound to play the music.
+     */
     void genTone(){
         // fill out the array
         for (int i = 0; i < numSamples; ++i) {
@@ -368,6 +430,10 @@ public class MusicEditor extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
+    /**
+     * This function will call the genTone() function and play the sound for each note.
+     * @throws InterruptedException
+     */
     void playSound() throws InterruptedException {
         final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
                 sampleRate, AudioFormat.CHANNEL_OUT_MONO,

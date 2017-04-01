@@ -48,8 +48,8 @@ public class FullScreenActivity extends AppCompatActivity {
     private double length = note.getNoteDuration();
 
     /**
-     * This will function will initialize the activity when the
-     *  activity is started for the first time.
+     * This will function will initialize the activity when the activity is started for the
+     *  first time.
      * @param savedInstanceState
      */
     @Override
