@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- *
+ * This class is the main/home screen of the activity.
+ * The user can either start a new project or load a previous one.
  */
 public class MainActivity extends AppCompatActivity {
 
     /**
-     *
+     * This class will operate the main activity in the app.
+     * It puts the title of the app and the app icon in the action bar.
      * @param savedInstanceState
      */
     @Override
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function is called if the user taps the create new project button.
      * @param view
      */
     public void createNew(View view) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This function is called if the user taps the load previous project button.
      * @param view
      */
     public void loadExisting(View view) {
