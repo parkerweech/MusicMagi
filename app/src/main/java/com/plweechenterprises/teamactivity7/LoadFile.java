@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * This class will allow the user to load a previous project that the user saved.
  */
 public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -30,7 +30,8 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     String filename;
 
     /**
-     *
+     * This function will be called when the user starts the load file activity.
+     * It will create the the layout and buttons on the screen.
      * @param savedInstanceState
      */
     @Override
@@ -56,7 +57,11 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
         dropdown.setAdapter(filenameAdapter);
         dropdown.setOnItemSelectedListener(this);
     }
-
+    /**
+     * This function populates the buttons in the action bar.
+     * @param menu_load
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu_load) {
         MenuInflater inflater = getMenuInflater();
@@ -69,7 +74,11 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
         return super.onCreateOptionsMenu(menu_load);
     }
 
-
+    /**
+     * This function controls what happens when you press the buttons in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
@@ -79,7 +88,9 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    /**
+     * This function will send the user to the main/home screen.
+     */
     public void homeScreen() {
         //change view to homeScreen activity
         Log.d("homeScreen", "homeScreen was called");
@@ -89,7 +100,7 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     /**
-     *
+     * This function will be activated when the user selects and item from the spinner list.
      * @param parent
      * @param view
      * @param pos
@@ -100,7 +111,7 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     /**
-     *
+     * This function was need to get the spinner to work.
      * @param parent
      */
     public void onNothingSelected(AdapterView<?> parent) {
@@ -110,7 +121,7 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     /**
-     *
+     * This function will open the previously saved file.
      * @return
      */
     String openFile() {
@@ -120,7 +131,7 @@ public class LoadFile extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     /**
-     *
+     * This function will load the information that is stored in the previously saved file.
      * @param view
      */
     public void load(View view) {
